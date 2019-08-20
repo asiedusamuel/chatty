@@ -4,7 +4,7 @@ node_modules/
 platforms/
 
 #Photoshop Files
-photoshop files/
+photoshop-files/
 
 # NativeScript Template
 *.js.map
