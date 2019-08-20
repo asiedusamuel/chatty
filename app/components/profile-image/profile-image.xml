@@ -1,0 +1,4 @@
+<AbsoluteLayout loaded="onLoad" xmlns:nativescript-image="nativescript-image" class="myUI">
+	<Label id="initials" text="{{ initials }}" class="rounded-profile-image initials-img" />
+	<Image id="imageContainer" loaded="{{ onImageLoaded }}" visibility="{{ src ? 'visible' : 'collapsed' }}" class="rounded-profile-image" src="{{ src }}" />
+</AbsoluteLayout>

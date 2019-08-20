@@ -1,0 +1,49 @@
+/* The Rev Tab */
+
+.sub-frame {
+    height: 91%;
+    width: 100%;
+}
+
+.custom-tab {
+    height: 88;
+    width: 100%;
+    background-image: url('~/assets/images/toolbar-bg.png');
+    background-position: top;
+    background-repeat: repeat-x;
+    box-shadow: 0 0 30px #333;
+    margin-top: 89.8%
+}
+
+.custom-tab .tab-button.active {
+    color: #91d377;
+}
+
+.custom-tab .tab-button.active .tab-icon {
+    background: #91d377;
+    color: #ffffff;
+}
+
+.custom-tab .tab-button {
+    border-color: transparent;
+    border-width: 1;
+    margin-left: 0;
+    width: 25%;
+    text-align: center;
+    color: #91d377;
+    margin-top: 12;
+}
+
+.custom-tab .tab-button .tab-icon {
+    font-size: 24;
+    border-radius: 25;
+    color: #91d377;
+    padding: 6;
+    width: 38;
+    height: 38;
+    font-family: 'fontisto'
+}
+
+.custom-tab .tab-button .tab-title {
+    font-size: 11;
+}

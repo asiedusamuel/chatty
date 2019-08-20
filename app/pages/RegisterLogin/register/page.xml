@@ -1,0 +1,18 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page login">
+	<StackLayout orientation="vertical" style="height:100%;">
+		<Image class="logo-on-login" row="0" verticalAlignment="bottom" horizontalAlignment="center" src="~/assets/images/logo.png" stretch="none" />
+		<StackLayout orientation="vertical" class="container">
+			<Label text="Phone Number" class="label" />
+			<AbsoluteLayout>
+				<Label text="+233" class="country-code-label" />
+				<TextField hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10" class="rounded-input with-icon-left">
+				</TextField>
+			</AbsoluteLayout>
+			<Button text="Next" onTap="apiCheckNumber" class="rounded-btn login-btn" />
+		</StackLayout>
+		<StackLayout orientation="horizontal" horizontalAlignment="center" style="margin-top: 40;" class="container">
+			<Label text="Already Have An Account?" />
+			<Label text="Login" class="text-link" onTap="{{ navigateToLogin }}" />
+		</StackLayout>
+	</StackLayout>
+</Page>

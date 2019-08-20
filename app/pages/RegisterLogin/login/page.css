@@ -1,0 +1,23 @@
+.page.login {
+    background-color: #ffffff;
+}
+
+.logo-on-login {
+    margin-top: 25%;
+    margin-bottom: 5%
+}
+
+.login-btn {
+    margin-top: 10;
+}
+
+.text-link {
+    margin-left: 5;
+}
+
+.country-code-label{
+    margin: 11.5 0 0 9;
+    font-size: 17.5;
+    text-align: right;
+    width: 35;
+}

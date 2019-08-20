@@ -1,0 +1,158 @@
+﻿/*
+In NativeScript, the app.css file is where you place CSS rules that
+you would like to apply to your entire application. Check out
+http://docs.nativescript.org/ui/styling for a full list of the CSS
+selectors and properties you can use to style UI components.
+
+/*
+In many cases you may want to use the NativeScript core theme instead
+of writing your own CSS rules. For a full list of class names in the theme
+refer to http://docs.nativescript.org/ui/theme. 
+The imported CSS rules must precede all other types of rules.
+*/
+
+@import '~nativescript-theme-core/css/core.light.css';
+
+/*
+The following CSS rule changes the font size of all UI
+components that have the btn class name.
+*/
+
+.page-icon {
+    font-size: 72;
+    vertical-align: top;
+    horizontal-align: center;
+    color: #6db94f;
+    margin-top: 20%;
+}
+
+.fa {
+    font-family: "FontAwesome";
+}
+
+.fi {
+    font-family: "fontisto";
+}
+
+.icofont {
+    font-family: "IcoFont";
+}
+
+.btn {
+    font-size: 18;
+}
+
+.container {
+    width: 90%;
+}
+
+.rounded-input {
+    border-radius: 50;
+    border-color: #91d377;
+    border-width: 1;
+    padding-left: 20;
+    padding-right: 20;
+    width: 100%;
+    font: 300 Arial;
+}
+
+.label {
+    font-size: 15;
+    margin-bottom: 5;
+}
+
+.rounded-input.with-icon-left {
+    padding-left: 48;
+}
+
+.rounded-btn {
+    background-color: #91d377;
+    border-radius: 25;
+    color: white;
+    font-size: 20;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.11);
+    font: 300 18 Arial;
+}
+
+.rounded-btn:active {
+    background-color: #6db94f;
+    color: white;
+}
+
+.text-link {
+    text-decoration: underline;
+    color: #60c4dd;
+}
+
+.page-scroll{
+    height: 100%;
+    width: 100%;
+}
+
+.section-header{
+    padding: 8 12;
+    border-bottom-color: #D7D7D7;
+    border-bottom-style: solid;
+    border-bottom-width:1;
+    height: 40;
+    background: rgb(240, 241, 237);
+    font-weight: 700;
+    font-size: 18;
+    text-transform: capitalize;
+}
+/* Chat item template style */
+.chatty-list-item{
+    border-top-width: 1; 
+    border-top-color: #E8E8E9;
+    width: 100%;
+    height: 70;
+}
+.chatty-list-item .list-item-body{
+    margin:10 0 0 10;
+}
+.chatty-list-item .list-item-body .name{
+    font-size: 18
+}
+.chatty-list-item .list-item-body .status{
+    width: 10;
+    height: 10;
+    border-radius: 10;
+    padding:0;
+    vertical-align: top;
+    margin-top: 10;
+}
+.chatty-list-item .list-item-body .status.online{
+    background-color: #6db94f;
+}
+.chatty-list-item .list-item-body .status.offline{
+    background-color: #c4c5c4;
+}
+.chatty-list-item .list-item-body .status.busy{
+    background-color: #fc4942;
+}
+.chatty-list-item .list-item-body .msg-container{
+    margin-top:0; 
+}
+.chatty-list-item .list-item-body .msg-preview{
+    font-size: 15;
+    color: #999999;
+    margin-left: 6;
+    margin-top: 5;
+}
+/* Profile Image */
+.profile-image{
+    border-radius: 50%;
+    border-color: #6db94f;
+    border-style: solid;
+}
+
+.profile-image.large{
+    height: 60;
+    width: 60;
+}
+.profile-image.medium{
+    height: 60;
+    width: 60;
+}

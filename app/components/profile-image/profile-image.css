@@ -1,0 +1,16 @@
+.myUI .rounded-profile-image {
+    background-color: #ffffff;
+    border-color: #6db94f;
+    color: #6db94f;
+    border-radius: 50;
+    background-position: center;
+}
+.myUI .rounded-profile-image {
+    height: 100%;
+    width: 100%;
+}
+.myUI .initials-img{
+    height: 100%;
+    width: 100%;
+    text-align: center;   
+}

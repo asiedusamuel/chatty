@@ -1,0 +1,23 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:ui="components/fullscreen-loader" actionBarHidden="true" unloaded="unloadPage" navigatingTo="navigatingTo" class="page login">
+	<ScrollView style="height:100%;">
+		<StackLayout orientation="vertical" style="height:100%;">
+			<StackLayout id="login-panel">
+				<Image class="logo-on-login" row="0" verticalAlignment="bottom" horizontalAlignment="center" src="~/assets/images/logo.png" stretch="none" />
+				<Label text="{{'Login to ' + applicationModel.appName}}" textWrap="true" class="h1" style="font-weight:200; text-align: center; margin-bottom: 32" />
+				<StackLayout orientation="vertical" class="container">
+					<Label text="Phone Number" class="label" />
+					<AbsoluteLayout>
+						<Label text="+233" class="country-code-label" /> 
+						<TextField hint="240 123 456" text="{{ userPassword }}" returnPress="{{ onReturnKeyPress }}" secure="false" returnKeyType="done" keyboardType="number" autocorrect="false" maxLength="10" class="rounded-input with-icon-left" />
+					</AbsoluteLayout>
+					<Button text="Next" onTap="{{ checkUserNumber }}" class="rounded-btn login-btn" />
+				</StackLayout>
+				<StackLayout orientation="horizontal" horizontalAlignment="center" style="margin-top: 40;" class="container">
+					<Label text="Not Yet Registered?" />
+					<Label text="Sign Up" class="text-link" onTap="{{ navigation.navigateToRegister }}" />
+				</StackLayout>
+			</StackLayout>
+			<ui:fullscreen-loader id="loader-panel" visibility="collapsed" />
+		</StackLayout>
+	</ScrollView>
+</Page>

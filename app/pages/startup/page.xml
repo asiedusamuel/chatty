@@ -1,0 +1,22 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
+    <ScrollView style="height: 100%;">
+      <FlexboxLayout flexDirection="column" height="100%">
+        <GridLayout rows="auto" columns="*" height="70%">
+          <Image
+            row="0"
+            style="margin-top:50%"
+            verticalAlignment="bottom"
+            horizontalAlignment="center"
+            src="~/assets/images/logo_with_bottom_text.png"
+            stretch="none"
+          />
+        </GridLayout>
+        <Image
+          src="~/assets/images/welcome_screen_bottom_bg.png"
+          verticalAlignment="stretch"
+          height="40%"
+          stretch="none"
+        />
+      </FlexboxLayout>
+    </ScrollView>
+</Page>

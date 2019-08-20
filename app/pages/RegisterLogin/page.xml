@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
+	<GridLayout verticalAlignment="stretch" rows="*, auto" columns="*" height="100%">
+		<StackLayout row="0" height="100%" style="padding:20">
+			<Image style="margin-top:5%;" horizontalAlignment="center" src="~/assets/images/welcome_slide1.png" stretch="aspectFit" verticalAlignment="center" />
+		</StackLayout>
+		<GridLayout verticalAlignment="stretch" row="2" rows="*, auto" columns="*" height="50%">
+			<StackLayout>
+				<Label class="h2" textWrap="true" text="Always Stay Connected" />
+				<Label class="description" textWrap="true" text="with real-time messaging" />
+			</StackLayout>
+			<AbsoluteLayout row="0" height="100%">
+				<Image src="~/assets/images/welcome_screen_bottom_bg.png" verticalAlignment="stretch" width="100%" height="100%" stretch="none" top="100%" left="0" right="0" />
+				<StackLayout orientation="horizontal" width="100%" style="margin-top:50%" top="100%" height="100%">
+					<StackLayout width="50%" style="padding: 0 5 0 15;">
+						<Button text="Sign Up" onTap="navigateToRegister" class="my-button" />
+					</StackLayout>
+					<StackLayout width="50%" style="padding: 0 15 0 5;">
+						<Button text="Login" onTap="{{ navigation.navigateToLogin }}" class="my-button" />
+					</StackLayout>
+				</StackLayout>
+			</AbsoluteLayout>
+		</GridLayout>
+	</GridLayout>
+</Page>

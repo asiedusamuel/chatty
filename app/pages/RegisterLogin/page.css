@@ -1,0 +1,37 @@
+.description {
+    text-align: center;
+    font-size: 18;
+    font-weight: 300;
+    height: auto;
+    margin-top: 15;
+}
+
+.h2 {
+    text-align: center;
+    font-weight: 300;
+    color: #636262;
+    font-size: 30;
+    height: auto;
+    padding: 0 20;
+}
+
+.welcome-bg {
+    background-image: url("~/assets/images/welcome_screen_bottom_bg.png");
+    background-position: center bottom;
+    background-size: cover;
+}
+
+.my-button {
+    background-color: #91d377;
+    border-radius: 25;
+    color: white;
+    font-size: 20;
+    vertical-align: middle;
+    width: 100%;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.11);
+}
+
+.my-button:active {
+    background-color: #6db94f;
+    color: white;
+}
