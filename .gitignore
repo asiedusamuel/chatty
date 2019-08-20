@@ -3,6 +3,9 @@ hooks/
 node_modules/
 platforms/
 
+#Photoshop Files
+photoshop files/
+
 # NativeScript Template
 *.js.map
 *.js
