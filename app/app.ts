@@ -29,7 +29,9 @@ export class appData extends Observable {
     constructor() {
         super();
     }
-
+    tap(){
+        console.log('tapped')
+    }
     get statusBarColor(): string {
         return this._statusBarColor;
     }

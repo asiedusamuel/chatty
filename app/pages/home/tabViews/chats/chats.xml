@@ -1,23 +1,21 @@
 <StackLayout xmlns:ui="components/header-bar" 
     xmlns:nativescript-image="nativescript-image" 
-    xmlns:ui1="components/profile-image" loaded="loaded" orientation="vertical">
+    loaded="loaded" orientation="vertical">
     <ui:header-bar title="My Chats"></ui:header-bar>
     <ScrollView class="page-scroll">
         <StackLayout height="100%">
             <Label class="section-header" text="Recent Chats" textWrap="true" />
             <ListView id="recent-chats" items="{{ applicationModel.recentChats }}" itemTap="{{ onTapRecentChatItem }}" height="100%" separatorColor="transparent" rowHeight="70" class="list-group" id="listView" row="0">
                 <ListView.itemTemplate>
-                    <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
-                        <!-- <ui1:profile-image initials="{{initial}}" size="60" src="{{ image }}" borderSize="0" /> -->
-                        <nativescript-image:Img col="0" width="60" height="60" id="profile-image" tap="{{$parents['ListView'].onTapRecentChatItem}}" placeholderImageUri="{{ $parents['ListView'].$parent.initialsImg }}" failureImageUri="{{ $parents['ListView'].$parent.initialsImg }}" src="{{ image1 }}" class="profile-image medium" roundAsCircle="true" style="border-width:1s;" />
+                    <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*" tap="{{ $parent.tap }}">
+                        <nativescript-image:Img col="0" width="60" height="60" id="profile-image" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1s;" />
                         <StackLayout col="1" class="list-item-body" orientation="vertical">
                             <Label text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
                             <GridLayout rows="*" width="100%" columns="10,*" class="msg-container">
                                 <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" textWrap="true" />
-                                <Label row="0" col="1" text="{{ $parent.$parent.initialsImg ||'null1' }}" class="msg-preview" textWrap="true" />
+                                <Label row="0" col="1" text="{{ $parent.$parent.initialsImg || 'null' }}" class="msg-preview" textWrap="true" />
                             </GridLayout>
                         </StackLayout>
-
                     </GridLayout>
                 </ListView.itemTemplate>
             </ListView>

@@ -44,9 +44,12 @@ export class homeModel extends Observable {
     public tabChange(args: EventData) {
         const tabItem = <Button>args.object;
         let index: number = tabItem.get("index");
-        this.selectedPage = index;
-        this.tabContainer.selectedIndex = index;
+        if(this.selectedPage != index){
+            this.selectedPage = index;
+            this.tabContainer.selectedIndex = index;
+        }
     }
+    
     public onSelectedIndexChanged(args:SelectedIndexChangedEventData){
         if (args.oldIndex !== -1) {
             const newIndex = args.newIndex;

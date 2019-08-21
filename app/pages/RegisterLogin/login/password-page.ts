@@ -5,6 +5,7 @@ import { Page } from "tns-core-modules/ui/page";
 import { appData } from "~/app";
 import { Navigations } from "~/utilities/navigations";
 import { Img } from "nativescript-image";
+import { Utils } from "~/utilities/Utils";
 
 export class LoginPasswordModel extends Observable{
     protected page: Page; 
@@ -15,6 +16,7 @@ export class LoginPasswordModel extends Observable{
     private profileImge: Img;
     private _loading: boolean = false;
     public applicationModel:appData = application["data"];
+    public initialsImg:string = Utils.initialsImg();
     constructor(page) {
         super();
         this.page = page;

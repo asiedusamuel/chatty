@@ -1,12 +1,12 @@
-<StackLayout xmlns:ui="components/header-bar" loaded="loaded" orientation="vertical">
+<StackLayout xmlns:ui="components/header-bar" xmlns:nativescript-image="nativescript-image" loaded="loaded" orientation="vertical">
     <ui:header-bar title="Contacts"></ui:header-bar>
     <ScrollView class="page-scroll">
         <StackLayout height="100%">
             <Label class="section-header" text="Available Friend" textWrap="true" />
             <ListView id="recent-chats" items="{{ applicationModel.scheduledChats }}" itemTap="{{ onTapRecentChatItem }}" height="100%" separatorColor="transparent" rowHeight="70" class="list-group" id="listView" row="0">
                 <ListView.itemTemplate>
-                    <GridLayout xmlns:ui1="components/profile-image" columns="70, *, 50" class="chatty-list-item" rows="*">
-                        <!-- <ui1:profile-image col="0" initials="{{initial}}" size="60" src="{{ image }}" borderSize="0" /> -->
+                    <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
+                        <nativescript-image:Img col="0" width="60" height="60" id="profile-image" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1s;" />
                         <StackLayout col="1" class="list-item-body" orientation="vertical">
                             <Label text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
                             <GridLayout rows="*" width="100%" columns="10,*"  class="msg-container">

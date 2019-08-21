@@ -23,13 +23,12 @@ export class ChatsModel extends Observable {
         }, 100);
     }
     
-
-    public onTapRecentChatItem(args: ItemEventData){
-        alert("Is item tap"); 
+    public tap(args: ItemEventData){
+        console.log("Is item tap"); 
     }
 }
 
 export function loaded(args: EventData) {
     const page = <ContainerView>args.object;
-    if (!page.bindingContext) page.bindingContext = new ChatsModel(page);
+    //if (!page.bindingContext) page.bindingContext = new ChatsModel(page);
 } 
