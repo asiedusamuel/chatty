@@ -17,10 +17,7 @@ export class ChatsModel extends Observable {
         // Add the navigations to the model class
         const listView: ListView = page.getViewById("recent-chats");
         this.applicationModel.recentChats['initialsImg'] = '~/assets/images/logo.png';
-        setTimeout(() => {
-            listView.refresh();
-            console.log('list view refreshed');
-        }, 100);
+        console.log("list loaded"); 
     }
     
     public tap(args: ItemEventData){
@@ -28,7 +25,7 @@ export class ChatsModel extends Observable {
     }
 }
 
-export function loaded(args: EventData) {
+export function onListViewLoaded(args: EventData) {
     const page = <ContainerView>args.object;
-    //if (!page.bindingContext) page.bindingContext = new ChatsModel(page);
+    if(!page.bindingContext) page.bindingContext = new ChatsModel(page);
 } 
