@@ -20,7 +20,8 @@ export class StartUpModel extends Observable {
 
     public checkAuthentication() {
         setTimeout(() => {
-            this.navigation.navigateToRegisterLogin();
+            //this.navigation.navigateToRegisterLogin();
+            this.navigation.navigateToHome();
         }, 1000);
     }
 }

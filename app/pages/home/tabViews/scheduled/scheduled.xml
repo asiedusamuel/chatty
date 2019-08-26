@@ -1,5 +1,4 @@
 <StackLayout xmlns:ui="components/header-bar" xmlns:nativescript-image="nativescript-image"  loaded="loaded" orientation="vertical">
-    <ui:header-bar title="Scheduled Messages"></ui:header-bar>
     <ScrollView class="page-scroll">
         <StackLayout height="100%">
             <Label class="section-header" text="Scheduled Chats" textWrap="true" />

@@ -141,10 +141,11 @@ components that have the btn class name.
     margin-left: 6;
     margin-top: 5;
 }
+
 /* Profile Image */
 .profile-image{
     border-radius: 50%;
-    border-color: #6db94f;
+    border-color: #549739;
     border-style: solid;
 }
 

@@ -9,28 +9,36 @@ import * as color from 'tns-core-modules/color';
 import { Observable } from "tns-core-modules/data/observable";
 import * as platform from 'tns-core-modules/platform';
 import { Utils } from "./utilities/Utils";
+import { chatItem } from "~/pages/home/chat-item";
 import { initialize } from "nativescript-image";
+var frame = require("tns-core-modules/ui/frame");
 declare var android;
 export class appData extends Observable {
     public appName: string = "Chatty"
     private _statusBarColor: string = "#6db94f";
-    public recentChats: Array<any> = [
-        { name: "Chris Hemsworth", lastMessage: 'Good morning Chris', status: 'online', image: '~/assets/images/avatar.png', initial: '' },
-        { name: "Henry Lawson", lastMessage: 'How was your business today?', status: 'online', image: '~/assets/images/avatar1.png', initial: 'HL' },
-        { name: "Raj Quaku", lastMessage: 'Did you attend the meeting?', status: 'offline', image: '', initial: 'RQ' },
-        { name: "Chris Evans", lastMessage: 'See if you can get it done', status: 'busy', image: '', initial: 'CE' },
-    ];
-    public scheduledChats: Array<any> = [
-        { name: "Chris Hemsworth", lastMessage: 'Good morning Chris', status: 'online', image: '~/assets/images/avatar.png', initial: '' },
-        { name: "Henry Lawson", lastMessage: 'How was your business today?', status: 'online', image: '~/assets/images/avatar1.png', initial: 'HL' },
-        { name: "Raj Quaku", lastMessage: 'Did you attend the meeting?', status: 'offline', image: '', initial: 'RQ' },
-        { name: "Chris Evans", lastMessage: 'See if you can get it done', status: 'busy', image: '', initial: 'CE' },
-    ];
+    public recentChats: chatItem[] = [];
+    private _handles:object = {};
+
+    public scheduledChats: Array<any> = [];
     constructor() {
         super();
     }
-    tap(){
-        console.log('tapped')
+
+    
+    public get user() : any {
+        return {
+            number: '233554081875'
+        }
+    }
+    
+    
+    get appColors():{primaryColor,primaryColorLight,primaryColorDark} {
+        var _colors = {
+            primaryColor: '#6db94f',
+            primaryColorLight: '#86ce6a',
+            primaryColorDark: '#549739',
+        }
+        return _colors;
     }
     get statusBarColor(): string {
         return this._statusBarColor;
@@ -46,7 +54,31 @@ export class appData extends Observable {
                 window.setStatusBarColor(new color.Color(value).android);
                 window.statusBarStyle = 1;
             }
-            this.notifyPropertyChange("statusBarColor", value);
+            if (platform.isIOS) {
+                var navigationBar = frame.topmost().ios.controller.navigationBar;
+                navigationBar.barStyle = new color.Color(value).ios;
+            }
+            this.notifyPropertyChange("statusBarColor", value); 
+        }
+    }
+
+    addHandler(name:string, id:any, callback:Function){
+        if(!this._handles[name]) this._handles[name] = [];
+        if(!this._handles[name][id]) this._handles[name][id] = function(){};
+            
+        if(this._handles[name][id]){
+            this._handles[name][id] = callback;
+        }
+        
+    }
+    triggerHander(name:string, data?:any){
+        if(this._handles[name]){
+            for (const key in this._handles[name]) {
+                if (this._handles[name].hasOwnProperty(key)) {
+                    const callback = this._handles[name][key];
+                    callback(data);
+                }
+            }
         }
     }
 }

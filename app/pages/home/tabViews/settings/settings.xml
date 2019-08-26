@@ -1,3 +1,3 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:ui="components/header-bar" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
     <Label text="Settings goes here" textWrap="true" />
 </Page>

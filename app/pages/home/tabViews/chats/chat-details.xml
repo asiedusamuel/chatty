@@ -1,0 +1,27 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+    xmlns:ui="components/header-bar" 
+    xmlns:nativescript-image="nativescript-image" 
+    xmlns:lv="nativescript-ui-listview" actionBarHidden="true" loaded="loaded" class="page">
+    <GridLayout rows="50, *, auto" height="100%">
+        <ui:header-bar row="0" title="{{name}}" id="custom-action-bar"></ui:header-bar>
+        <ScrollView row="1" class="page-scroll" height="100%">
+            <lv:RadListView id="conversations" items="{{ conversations }}" loaded="onListViewLoaded">
+                <lv:RadListView.itemTemplate>
+                    <GridLayout columns="*" rows="auto" class="{{conversationClass}}">
+                        <StackLayout class="{{filter}}" orientation="horizontal" horizontalAlignment="{{align}}">
+                            <nativescript-image:Img col="0" visibility="{{showImage}}" col="1" width="30" height="30" id="profile-image" placeholderImageUri="{{initials}}" verticalAlignment="top" src="{{ image }}" class="profile-image medium authorimg" roundAsCircle="true" style="border-width:1;" />
+                            <Label text="{{message}}" class="msg_text" textWrap="true" verticalAlignment="top"></Label>
+                        </StackLayout>
+                    </GridLayout>
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
+        </ScrollView>
+        <GridLayout row="2" rows="*" class="keyboard-bar" columns="35, *, 35, 35">
+            <Button row="0" col="0" class="fi message-btn" text="&#xea61;"/>
+            <TextField row="0" col="1" class="message-inp" textWrap="true"/>
+            <Button row="0" col="2" class="fi message-btn" text="&#xe996;" />
+            <Button row="0" col="3" class="fi message-btn" text="&#xe9e0;" />
+        </GridLayout>
+    </GridLayout>
+</Page>
+

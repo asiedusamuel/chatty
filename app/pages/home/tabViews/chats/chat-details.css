@@ -1,0 +1,63 @@
+.page{
+    border-top-color: #D7D7D7;
+    border-top-style: solid;
+    border-top-width:1;
+}
+.keyboard-bar{
+    background: #e7e9e6;
+}
+.keyboard-bar .message-inp{
+    width: 100%;
+    border-width: 0;
+    border-bottom: none;
+    border-radius: 20;
+    background: #f7f7f7;
+    color: #353535;
+    margin: 5;
+    padding: 5 10;
+}
+.keyboard-bar .message-btn{
+    padding: 0;
+    background: #e7e9e6;
+    z-index: 0;
+    border-radius: 0;
+    color: #657887;
+    width: 30;
+    height: 30;
+    font-size: 23;
+}
+
+
+/* Chat styles */
+.msg {
+    font-size: 14;
+    padding: 0;
+    margin: 0;
+}
+.msg.same-as-prev{
+    margin-left: 40;
+}
+
+.me .msg_text {
+    background-color: #30A9FF;
+    color: white;
+    padding: 8;
+    margin-right: 10;
+    border-radius: 25;
+    
+}
+
+.them .msg_text {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 7;
+    margin-right: 40;
+    border-radius: 25;
+}
+
+.authorimg {
+    margin: 0 5 5 5;
+    width: 30;
+    height: 30;
+    border-radius: 15;
+}

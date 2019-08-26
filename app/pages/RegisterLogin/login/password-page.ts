@@ -1,10 +1,11 @@
+import { FinalEventData, Img } from "nativescript-image";
 import * as application from "tns-core-modules/application";
 import { EventData, Observable } from "tns-core-modules/data/observable";
+import { ImageSource } from "tns-core-modules/image-source/image-source";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout/stack-layout";
 import { Page } from "tns-core-modules/ui/page";
 import { appData } from "~/app";
 import { Navigations } from "~/utilities/navigations";
-import { Img } from "nativescript-image";
 import { Utils } from "~/utilities/Utils";
 
 export class LoginPasswordModel extends Observable{
@@ -16,7 +17,6 @@ export class LoginPasswordModel extends Observable{
     private profileImge: Img;
     private _loading: boolean = false;
     public applicationModel:appData = application["data"];
-    public initialsImg:string = Utils.initialsImg();
     constructor(page) {
         super();
         this.page = page;
@@ -26,7 +26,15 @@ export class LoginPasswordModel extends Observable{
         this.profileImge = page.getViewById('profile-image');               
         this.applicationModel.statusBarColor= "#FFFFFF";
     }
+
     
+    initialsImg(initials: string) : ImageSource {
+        var image = Utils.initialsImg({size: 200, initials:initials});
+        this.notifyPropertyChange('initialsImg',image);
+        return image;
+    }
+    
+
     private showLoader(){
         this.loginPanel.visibility = "collapse";
         this.loaderPanel.visibility = "visible";
@@ -46,7 +54,12 @@ export class LoginPasswordModel extends Observable{
             setTimeout(() => {
                 this.hideLoader();
             }, 1000);
-        }, 2000);
+        }, 1000);
+    }
+    public onFinalImageSet(args: FinalEventData) {
+        var img = <Img>args.object;
+        console.log(img);
+        
     }
 }
 // Add the navigations to the model class

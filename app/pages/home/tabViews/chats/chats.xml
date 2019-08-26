@@ -1,24 +1,28 @@
-<StackLayout xmlns:ui="components/header-bar" 
+<StackLayout 
+    xmlns:ui="components/header-bar" 
     xmlns:nativescript-image="nativescript-image" 
-    loaded="loaded" orientation="vertical">
-    <ui:header-bar title="My Chats"></ui:header-bar>
-    <ScrollView class="page-scroll">
+    xmlns:lv="nativescript-ui-listview" 
+    xmlns:RL="nativescript-ripple" loaded="loaded" orientation="vertical">
+    
+    <Label class="section-header" text="Recent Chats" textWrap="true" />
+    <ScrollView class="page-scroll" height="100%">
         <StackLayout height="100%">
-            <Label class="section-header" text="Recent Chats" textWrap="true" />
-            <ListView id="recent-chats" items="{{ applicationModel.recentChats }}" loaded="onListViewLoaded" itemTap="{{ onTapRecentChatItem }}" height="100%" separatorColor="transparent" rowHeight="70" class="list-group" id="listView" row="0">
-                <ListView.itemTemplate>
-                    <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*" tap="{{ $parent.tap }}">
-                        <nativescript-image:Img col="0" width="60" height="60" id="profile-image" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1s;" />
-                        <StackLayout col="1" class="list-item-body" orientation="vertical">
-                            <Label text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
-                            <GridLayout rows="*" width="100%" columns="10,*" class="msg-container">
-                                <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" textWrap="true" />
-                                <Label row="0" col="1" text="{{ lastMessage || 'null' }}" class="msg-preview" textWrap="true" />
+            <lv:RadListView id="recent-chats" items="{{ recentChats }}" loaded="onListViewLoaded">
+                <lv:RadListView.itemTemplate>
+                    <!-- <RL:Ripple rippleColor="#86ce6a"> -->
+                        <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
+                            <nativescript-image:Img col="0" tap="{{ previewImage }}" width="60" height="60" id="profile-image" placeholderImageUri="{{initials}}" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1;" />
+                            <GridLayout rows="20,30" col="1" class="list-item-body" tap="{{ viewConversation }}" orientation="vertical">
+                                <Label row="0" text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
+                                <GridLayout row="1" rows="*" width="100%" columns="10,*" class="msg-container">
+                                    <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" />
+                                    <Label row="0" col="1" text="{{ lastMessage }}" class="msg-preview" />
+                                </GridLayout>
                             </GridLayout>
-                        </StackLayout>
-                    </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
+                        </GridLayout>
+                    <!-- </RL:Ripple> -->
+                </lv:RadListView.itemTemplate>
+            </lv:RadListView>
         </StackLayout>
     </ScrollView>
-</StackLayout>
+</StackLayout> 
