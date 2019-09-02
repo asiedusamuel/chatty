@@ -1,0 +1,9 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" actionBarHidden="true" loaded="onLoaded" navigatingTo="onNavigatingTo">
+    <GridLayout rows="150,auto, 200, 10">
+        <Label row="0" text="Sign Up Completed" verticalAlignment="center" class="signup-title" textWrap="true" />
+        <Label text="&#xe995;" row="1" class="fi checked-circle" textWrap="true" />
+        <StackLayout row="2" orientation="horizontal" horizontalAlignment="center" class="container">
+            <Button text="Start Chating" onTap="{{gotoChats}}" class="rounded-btn login-btn" />
+        </StackLayout>
+    </GridLayout>
+</Page>

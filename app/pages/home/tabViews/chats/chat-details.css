@@ -3,9 +3,11 @@
     border-top-style: solid;
     border-top-width:1;
 }
+
 .keyboard-bar{
     background: #e7e9e6;
 }
+
 .keyboard-bar .message-inp{
     width: 100%;
     border-width: 0;
@@ -16,6 +18,7 @@
     margin: 5;
     padding: 5 10;
 }
+
 .keyboard-bar .message-btn{
     padding: 0;
     background: #e7e9e6;
@@ -32,32 +35,89 @@
 .msg {
     font-size: 14;
     padding: 0;
-    margin: 0;
+    margin-top: 8;
 }
 .msg.same-as-prev{
     margin-left: 40;
+    margin-top: 1;
 }
-
+.msg.image .msg_text {
+    padding: 1;
+}
+.msg.same-as-prev .them .msg_text{
+    border-radius: 0;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
+.msg.same-as-prev .me .msg_text{
+    border-radius: 0;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 0;
+}
+.msg .sub-content{
+    font-size: 11;
+    margin-top: 3;
+}
+.msg.image .sub-content{
+    padding-left: 10;
+}
+.msg .them .sub-content{
+    color: #30A9FF;
+}
+.msg .me .sub-content{
+    color: #f1f0f0;
+}
+.msg_text {
+    font-size: 16;
+}
 .me .msg_text {
     background-color: #30A9FF;
     color: white;
-    padding: 8;
+    padding: 8 12;
     margin-right: 10;
-    border-radius: 25;
-    
+    border-radius: 5%;
+    max-width: 80%;
+    margin-left: 40;
+    border-bottom-right-radius: 0;
 }
 
 .them .msg_text {
     background-color: #e0e0e0;
     color: #333;
-    padding: 7;
+    padding: 7 12;
     margin-right: 40;
-    border-radius: 25;
+    border-radius: 5%;
+    max-width: 80%;
+    border-top-left-radius: 0;
 }
-
+.preview {
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+}
 .authorimg {
     margin: 0 5 5 5;
     width: 30;
     height: 30;
     border-radius: 15;
 }
+.slideInFromRight {
+    animation-name: slideInFromRight;
+    animation-duration: 1;
+}
+.slideInFromLeft {
+    animation-name: slideInFromLeft;
+    animation-duration: 1;
+}
+@keyframes slideInFromRight {
+    from { transform: translate(10, 0); }
+    to { transform: translate(0, 0); }
+}
+@keyframes slideInFromLeft {
+    from { transform: translate(-10, 0); }
+    to { transform: translate(0, 0); }
+}
+

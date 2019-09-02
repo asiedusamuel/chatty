@@ -7,15 +7,19 @@ import { Page } from "tns-core-modules/ui/page";
 import { appData } from "~/app";
 import { Navigations } from "~/utilities/navigations";
 import { Utils } from "~/utilities/Utils";
+import { API } from "~/Services/api-request";
+import { alertType } from "~/components/alert-box";
 
 export class LoginPasswordModel extends Observable{
     protected page: Page; 
     public navigation: Navigations;
     static $parent;
+    private alertBox: StackLayout;
     private loginPanel: StackLayout;
     private loaderPanel: StackLayout;
     private profileImge: Img;
     private _loading: boolean = false;
+    private _password: string;
     public applicationModel:appData = application["data"];
     constructor(page) {
         super();
@@ -25,46 +29,64 @@ export class LoginPasswordModel extends Observable{
         this.loaderPanel = page.getViewById('loader-panel');               
         this.profileImge = page.getViewById('profile-image');               
         this.applicationModel.statusBarColor= "#FFFFFF";
+        this.alertBox = page.getViewById('alert-box');
     }
-
+    get password(): string { return this._password; };
+    set password(value: string) {
+        if (this._password !== value) {
+            this._password = value;
+            this.notifyPropertyChange("password", value);
+        }
+    }
     
-    initialsImg(initials: string) : ImageSource {
+    initialsImg() : ImageSource {
+        const initials = Utils.createInitials(this.applicationModel.user.displayName);
         var image = Utils.initialsImg({size: 200, initials:initials});
         this.notifyPropertyChange('initialsImg',image);
         return image;
     }
-    
 
-    private showLoader(){
-        this.loginPanel.visibility = "collapse";
-        this.loaderPanel.visibility = "visible";
-        this._loading = true;
+    private showLoader() {
+        this.loaderPanel.bindingContext.Show();
     }
 
-    private hideLoader(){
-        this.loginPanel.visibility = "visible";
-        this.loaderPanel.visibility = "collapse";
-        this._loading = false;
+    private hideLoader() {
+        this.loaderPanel.bindingContext.Hide();
     }
 
     public checkLogin() {
-        this.showLoader();
-        setTimeout(() => {
-            this.navigation.navigateToHome();
-            setTimeout(() => {
+        if (this.password) {
+            this.showLoader();
+
+            API.checkAccountPassword(this.applicationModel.user.userNumber, this.password).then((data: any) => {
+                return JSON.parse(data)
+            }).then((data: any) => {
+                if (data.success) {
+                    setTimeout(() => {
+                        this.hideLoader();
+                    }, 1000);
+                    this.applicationModel.user = data.user;
+                    this.navigation.navigateToLoginPassword();
+                } else {
+                    this.hideLoader();
+                    this.alertBox.bindingContext.alert(alertType.error, data.message);
+                }
+            }).catch(err => {
                 this.hideLoader();
-            }, 1000);
-        }, 1000);
+                this.alertBox.bindingContext.alert(alertType.error, err);
+            });
+        } else {
+            this.alertBox.bindingContext.alert(alertType.error, "Enter a password");
+        }
     }
+
     public onFinalImageSet(args: FinalEventData) {
-        var img = <Img>args.object;
-        console.log(img);
-        
+        var img = <Img>args.object;        
     }
 }
 // Add the navigations to the model class
 
-export function navigatingTo(args: EventData) {
+export function loaded(args: EventData) {
     const page = <Page>args.object;
     if(!page.bindingContext){
         page.bindingContext = new LoginPasswordModel(page);

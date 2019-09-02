@@ -55,6 +55,21 @@ components that have the btn class name.
     width: 100%;
     font: 300 Arial;
 }
+.rounded-input1 {
+    border-radius: 50;
+    border-color: #91d377;
+    border-width: 1;
+    width: 100%;
+    font: 300 Arial;
+    padding: 10 20;
+}
+.rounded-input1 TextField {
+    border-width: 1;    
+    border-color: transparent;
+    padding-left: 20;
+    padding: 0;
+    width: 100%;
+}
 
 .label {
     font-size: 15;
@@ -156,4 +171,23 @@ components that have the btn class name.
 .profile-image.medium{
     height: 60;
     width: 60;
+}
+
+.alert{
+    padding: 10;
+    font-size: 14;
+    font-weight: 300;
+    margin-bottom: 5;
+}
+.alert.error{
+    background: #ffdcdb;
+    border-left-color: #fc4942;
+    border-left-style: solid;
+    border-left-width: 5;
+}
+.alert.success{
+    background: #dfffdb;
+    border-left-color: #0d9908;
+    border-left-style: solid;
+    border-left-width: 5;
 }

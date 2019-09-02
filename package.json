@@ -13,12 +13,19 @@
   "license": "SEE LICENSE IN <your-license-filename>",
   "repository": "<fill-your-repository-here>",
   "dependencies": {
+    "@types/node": "^12.7.3",
     "nativescript-bitmap-factory": "^1.8.1",
     "nativescript-image": "^2.2.3",
+    "nativescript-keyboardshowing": "^1.0.2",
     "nativescript-ripple": "^2.2.1",
+    "nativescript-socket.io": "^0.11.0",
+    "nativescript-sqlite": "^2.3.3",
+    "nativescript-statusbar": "^5.0.0",
     "nativescript-theme-core": "~1.0.6",
     "nativescript-ui-listview": "^7.0.4",
-    "tns-core-modules": "~6.0.0"
+    "timeago.js": "^4.0.0-beta.2",
+    "tns-core-modules": "~6.0.0",
+    "typeorm": "^0.2.18"
   },
   "devDependencies": {
     "nativescript-dev-webpack": "~1.0.0",

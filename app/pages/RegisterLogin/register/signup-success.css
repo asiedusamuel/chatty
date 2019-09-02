@@ -1,0 +1,19 @@
+.checked-circle{
+    border-width: 3;
+    border-radius:100; 
+    font-size:65;
+    border-color:#68aa4d; 
+    color:#65a54b; 
+    border-style:solid;
+    width: 120;
+    height: 120;
+    padding-top: 25%;
+    padding-left: 25%;
+
+}
+.signup-title{
+    font-size: 26;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 10;
+}

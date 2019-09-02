@@ -1,0 +1,3 @@
+<StackLayout loaded="onLoad" >
+    <label id="label" text="{{alertMessage}}" visibility="{{ alertVisible ? 'visible' : 'collapsed' }}" class="{{alertType + ' alert container'}}" textWrap="true" />
+</StackLayout>

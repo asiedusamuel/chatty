@@ -12,7 +12,7 @@
 				<Image src="~/assets/images/welcome_screen_bottom_bg.png" verticalAlignment="stretch" width="100%" height="100%" stretch="none" top="100%" left="0" right="0" />
 				<StackLayout orientation="horizontal" width="100%" style="margin-top:50%" top="100%" height="100%">
 					<StackLayout width="50%" style="padding: 0 5 0 15;">
-						<Button text="Sign Up" onTap="navigateToRegister" class="my-button" />
+						<Button text="Sign Up" onTap="{{ navigation.navigateToRegister }}" class="my-button" />
 					</StackLayout>
 					<StackLayout width="50%" style="padding: 0 15 0 5;">
 						<Button text="Login" onTap="{{ navigation.navigateToLogin }}" class="my-button" />

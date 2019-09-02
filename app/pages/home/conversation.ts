@@ -2,7 +2,9 @@ import * as application from "tns-core-modules/application";
 import { Observable } from "tns-core-modules/data/observable";
 import { appData } from "~/app";
 import { Utils } from "~/utilities/Utils";
-export enum ConversationType { Text, Image };
+import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout/grid-layout";
+export enum ConversationType { Text = 'text-type', Image = 'image-type' };
+import { format} from 'timeago.js';
 export class Conversation extends Observable {
     public appModule: appData = application['data'];
     public tapColor: string;
@@ -13,6 +15,8 @@ export class Conversation extends Observable {
     private _read: boolean;
     private _from: string;
     private _message: string;
+    public _date: string;
+    public _dateString: string;
 
     constructor() {
         super();
@@ -25,6 +29,7 @@ export class Conversation extends Observable {
     public get image(): string { return this._image; }
     public get from(): string { return this._from; }
     public get message(): string { return this._message; }
+    public get date(): string { return this._date; }
 
     public set sameAsPrevious(v: boolean) { if (v != this._sameAsPrevious) { this._sameAsPrevious = v; this.notifyPropertyChange('sameAsPrevious', v); } }
     public set name(v: string) { if (v != this._name) { this._name = v; this.notifyPropertyChange('name', v); } }
@@ -33,9 +38,22 @@ export class Conversation extends Observable {
     public set image(v: string) { if (v != this._image) { this._image = v; this.notifyPropertyChange('image', v); } }
     public set from(v: string) { if (v != this._from) { this._from = v; this.notifyPropertyChange('from', v); } }
     public set message(v: string) { if (v != this._message) { this._message = v; this.notifyPropertyChange('message', v); } }
+    public set date(v: string) {
+        if (v != this._date) {
+            this._date = v; 
+            this.notifyPropertyChange('date', v);
+        }
+    }
 
+    public startAgo(datetime:string){
+        this.date = format(datetime);
+        this._dateString = datetime;
+        setInterval(() => {
+            this.date = format(this._dateString);
+        }, 60000);        
+    }
     get filter(): string {
-        if (this.from == this.appModule.user.number) {
+        if (this.from == this.appModule.user.userNumber) {
             return "me"
         }
         else {
@@ -44,7 +62,7 @@ export class Conversation extends Observable {
     }
 
     get align(): string {
-        if (this.from == this.appModule.user.number) {
+        if (this.from == this.appModule.user.userNumber) {
             return "right"
         }
         else {
@@ -53,7 +71,7 @@ export class Conversation extends Observable {
     }
 
     get showImage(): string {
-        if (this.from == this.appModule.user.number) {
+        if (this.from == this.appModule.user.userNumber) {
             return "collapsed"
         }
         else {
@@ -78,9 +96,25 @@ export class Conversation extends Observable {
         return image;
     }
 
-    public get conversationClass() : string {
+    public animateView(args: any) {
+        const view = <GridLayout>args.object
+        view.animate({
+            translate: { x: 100, y: 100 },
+            duration: 3000
+        });
+
+    }
+
+    public get conversationClass(): string {
         var $class = "msg";
-        if (this.sameAsPrevious) $class += " same-as-prev";
+        if (this.sameAsPrevious) {
+            $class += " same-as-prev"
+        };
+            if (this.from == this.appModule.user.userNumber) {
+                $class += " slideInFromRight"
+            }else{
+                $class += " slideInFromLeft"
+            }
         return $class
     }
 }

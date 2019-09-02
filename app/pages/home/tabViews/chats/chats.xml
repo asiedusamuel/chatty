@@ -7,7 +7,7 @@
     <Label class="section-header" text="Recent Chats" textWrap="true" />
     <ScrollView class="page-scroll" height="100%">
         <StackLayout height="100%">
-            <lv:RadListView id="recent-chats" items="{{ recentChats }}" loaded="onListViewLoaded">
+            <lv:RadListView id="recent-chats" height="100%" items="{{ recentChats }}" loaded="onListViewLoaded">
                 <lv:RadListView.itemTemplate>
                     <!-- <RL:Ripple rippleColor="#86ce6a"> -->
                         <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">

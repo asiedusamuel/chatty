@@ -1,0 +1,18 @@
+Frame{
+    background: transparent;
+}
+.page{
+    background: transparent;
+    width: 100%;
+}
+Label{
+    background: transparent;
+}
+.slideInFromRight {
+    animation-name: slideInFromRight;
+    animation-duration: 1;
+}
+@keyframes slideInFromRight {
+    from { transform: translate(100, 100); }
+    to { transform: translate(0, 0); }
+}

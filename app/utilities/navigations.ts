@@ -2,7 +2,7 @@ import { EventData } from "tns-core-modules/data/observable";
 import { Page } from "tns-core-modules/ui/page/page";
 import { Utils } from "./Utils";
 export class Navigations{
-    private page: Page;
+    page: Page;
     constructor($currentPage: Page) {
         this.page = $currentPage
     }
@@ -12,6 +12,9 @@ export class Navigations{
         //page.frame.navigate({moduleName:"pages/loader/page",clearHistory:true});
     };
 
+    public navigateBack(args?: any){
+        this.page.frame.goBack();
+    }
     public navigateToLogin(args?: any){
         this.page.frame.navigate({moduleName:"pages/RegisterLogin/login/page"});
     }
@@ -24,10 +27,14 @@ export class Navigations{
     public navigateToRegister(args?: any){ 
         this.page.frame.navigate({moduleName:"pages/RegisterLogin/register/page"});
     } 
+    public navigateToRegisterSuccess(args?: any){ 
+        this.page.frame.navigate({moduleName:"pages/RegisterLogin/register/signup-success"});
+    } 
     public navigateToLoader(args?: any){
         this.page.frame.navigate({moduleName:"pages/loader/page"});
     }
     public navigateToRegisterLogin(args?: any){ 
+        //console.log(this.page.frame.navigate);
         this.page.frame.navigate({moduleName:"pages/RegisterLogin/page",clearHistory:true});
     }
     public navigateToHome(args?: any){ 

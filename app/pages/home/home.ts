@@ -7,11 +7,14 @@ import { appData } from "~/app";
 import { Navigations } from "~/utilities/navigations";
 import { ItemEventData } from "tns-core-modules/ui/list-view/list-view";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout/grid-layout";
+import { nQuery } from "~/utilities/nQuery";
+import { agoTimer } from "~/utilities/Utils";
 
 declare var android;
-
+var $:nQuery;
 declare const CGSizeMake: any;
 declare var android;
+export var context:homeModel;
 export class homeModel extends Observable {
     protected page: Page;
     public navigation: Navigations;
@@ -26,16 +29,20 @@ export class homeModel extends Observable {
         this.selectedPage = 0;
     }
 
-    setTopView(page: Page) {
+    setRootView(page: Page) {
         this.page = page;
+        //$ = new nQuery(this.page);
+        //$.select("#tab").hide()
         // Add the navigations to the model class
-        this.navigation = new Navigations(page);
+        
         setTimeout(() => {
-            this.applicationModel.statusBarColor = "#6db94f";
+            this.navigation = new Navigations(page);
+            this.applicationModel.customStatusBarColor("#6db94f");
             this.actionBar = page.getViewById('custom-action-bar');
             this.applicationModel.triggerHander('home-tab-changed', this);
+            this.actionBar.bindingContext.BackAction = context.navigation.navigateBack;
         }, 100);
-        this.tabContainer = this.page.getViewById("tabViewContainer");
+        this.tabContainer = this.page.getViewById("tabViewContainer");  
         setTimeout(() => {
             if (application.android) {
                 this.tabContainer.android.removeViewAt(1);
@@ -65,9 +72,9 @@ export class homeModel extends Observable {
         }
     }
 }
-export var context = new homeModel();
+context = new homeModel();
 export function navigatingTo(args: EventData) {
     const page = <Page>args.object;
-    context.setTopView(page)
+    context.setRootView(page)
     page.bindingContext = context;
 } 

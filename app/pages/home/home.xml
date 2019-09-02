@@ -1,5 +1,6 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
     xmlns:ui="components/header-bar" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
+    
     <GridLayout rows="50, *, 60" height="100%">
         <ui:header-bar row="0" title="My Chats" id="custom-action-bar"></ui:header-bar>
         <TabView row="1" id="tabViewContainer" visibility="{{ isReady ? 'visible' : 'collapsed' }}" class="sub-frame" selectedIndexChanged="{{ onSelectedIndexChanged }}">

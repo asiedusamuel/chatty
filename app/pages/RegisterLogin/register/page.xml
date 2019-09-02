@@ -1,18 +1,50 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page login">
-	<StackLayout orientation="vertical" style="height:100%;">
-		<Image class="logo-on-login" row="0" verticalAlignment="bottom" horizontalAlignment="center" src="~/assets/images/logo.png" stretch="none" />
-		<StackLayout orientation="vertical" class="container">
-			<Label text="Phone Number" class="label" />
-			<AbsoluteLayout>
-				<Label text="+233" class="country-code-label" />
-				<TextField hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10" class="rounded-input with-icon-left">
-				</TextField>
-			</AbsoluteLayout>
-			<Button text="Next" onTap="apiCheckNumber" class="rounded-btn login-btn" />
-		</StackLayout>
-		<StackLayout orientation="horizontal" horizontalAlignment="center" style="margin-top: 40;" class="container">
-			<Label text="Already Have An Account?" />
-			<Label text="Login" class="text-link" onTap="{{ navigateToLogin }}" />
-		</StackLayout>
-	</StackLayout>
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+	xmlns:ui="components/header-bar" 
+	xmlns:ui1="components/fullscreen-loader" actionBarHidden="true" navigatingTo="navigatingTo" class="page login">
+	
+	<GridLayout visibility="visible" rows="50,auto" style="height:100%;">
+		<ui:header-bar row="0" title="" id="custom-action-bar"></ui:header-bar>
+		<ScrollView row="1" style="height:100%;">
+			<StackLayout style="height:100%;">
+				<GridLayout id="register-panel" rows="50, auto,50,80,80,70,60,60" height="100%">
+					<Image class="logo-on-login" row="1" verticalAlignment="bottom" horizontalAlignment="center" src="~/assets/images/logo.png" stretch="none" />
+					<Label row="2" text="Create An Account" class="signup-title" textWrap="true" />
+					<StackLayout row="3" orientation="vertical" class="container">
+						<Label text="Phone Number" class="label" />
+						<AbsoluteLayout>
+							<Label text="+233" class="country-code-label" textWrap="true" />
+							<TextField hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10" class="rounded-input with-icon-left">
+							</TextField>
+						</AbsoluteLayout>
+					</StackLayout>
+					<StackLayout row="4" orientation="vertical" class="container">
+						<Label text="Type your password" class="label" />
+						<AbsoluteLayout>
+							<TextField secure="true" returnKeyType="done" autocorrect="false" class="rounded-input">
+							</TextField>
+						</AbsoluteLayout>
+					</StackLayout>
+					<StackLayout row="5" orientation="vertical" class="container">
+						<Label text="Retype your password" class="label" />
+						<AbsoluteLayout>
+							<TextField secure="true" returnKeyType="done" autocorrect="false" class="rounded-input">
+							</TextField>
+						</AbsoluteLayout>
+					</StackLayout>
+					<StackLayout row="6" orientation="horizontal" horizontalAlignment="center" class="container">
+						<Button text="Create Account" onTap="{{signUp}}" class="rounded-btn login-btn" />
+					</StackLayout>
+					<StackLayout row="7" orientation="horizontal" verticalAlignment="bottom" horizontalAlignment="center" class="container">
+						<Label text="By signing up you agree to our" textWrap="true" />
+						<Label text="terms and conditions" class="text-link" textWrap="true" />
+					</StackLayout>
+
+
+				</GridLayout>
+				<ui1:fullscreen-loader verticalAlignment="top" id="loader-panel" visibility="collapsed" />
+			</StackLayout>
+		</ScrollView>
+	</GridLayout>
+		
+
 </Page>

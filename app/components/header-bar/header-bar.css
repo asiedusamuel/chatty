@@ -1,5 +1,4 @@
 .header-bar{
-    background: #ffffff;
     padding: 0;
     margin: 0;
 }
@@ -25,11 +24,14 @@
     z-index: 0;
     width: 40;
     border-radius: 25;
-    color: #657887;
 }
 .header-bar .header-btn:active{
     z-index: 10;
 }
+.header-bar .header-btn:active{
+    z-index: 10;
+}
+
 
 .header-bar .header-title{
     text-align: center;
@@ -38,7 +40,28 @@
     vertical-align: middle;
     margin-top: 12;
     color: #657887;
+    
+}
+.header-bar .header-btn.light{
+    color: #ffffff;
+}
+.header-bar .header-title.light{
+    color: #ffffff;
+}
+.header-bar .header-btn.dark{
+    color: #657887; 
+}
+.header-bar .header-title.dark{
+    color: #657887;
 }
 .header-bar #right-btns{
     padding-right: 10;
+}
+.transparentAnim {
+    animation-name: transparentAnim;
+    animation-duration: 3;
+}
+@keyframes transparentAnim {
+    from { background-color: white; }
+    to { background-color: transparent; }
 }

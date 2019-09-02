@@ -1,4 +1,4 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" loaded="loaded" class="page">
     <ScrollView style="height: 100%;">
       <FlexboxLayout flexDirection="column" height="100%">
         <GridLayout rows="auto" columns="*" height="70%">

@@ -1,0 +1,44 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+    xmlns:ui="components/header-bar" 
+    xmlns:RL="nativescript-ripple" 
+    xmlns:nativescript-image="nativescript-image" actionBarHidden="true" loaded="loaded" navigatingTo="onNavigatedTo">
+    <GridLayout rows="*,*">
+        <nativescript-image:Img row="0" id="profile-image" showProgressBar="true" width="100%" height="100%" verticalAlignment="top" src="~/assets/images/profile-img.png" />
+        <StackLayout row="0" class="profile-image-layout" tap="{{tapToViewProfile}}" pan="{{ panToViewProfile }}" height="100%" verticalAlignment="top"></StackLayout>
+        <ui:header-bar row="0" title="{{name}}" id="profile-action-bar" verticalAlignment="top"></ui:header-bar>
+        <StackLayout row="1" rows="55,55,55" verticalAlignment="top" id="content" height="auto" width="100%" verticalAlignment="top" class="list-actions">
+            <RL:Ripple row="0" rippleColor="#86ce6a" pan="{{ panToViewProfile }}" height="50">
+                <GridLayout rows="50" height="100%" width="100%" class="list-action" columns="10,auto, *, auto,10">
+                    <Label row="0" col="1" text="&#xe9c9;" class="fi list-action-icon" textWrap="true" />
+                    <Label row="0" col="2" text="Delete Conversation" class="list-action-text" textWrap="true" />
+                    <Label row="0" col="3" text="&#xe96a;" class="fi list-action-arrow" textWrap="true" />
+                    <Label verticalAlignment="bottom" col="2" colSpan="3" class="divider" textWrap="true" />
+                </GridLayout>
+            </RL:Ripple>
+            <RL:Ripple row="1" rippleColor="#86ce6a" pan="{{ panToViewProfile }}" height="50">
+                <GridLayout rows="50,1" height="100%" width="100%" class="list-action" columns="10,auto, *, auto,10">
+                    <Label row="0" col="1" text="&#xe99b;" class="fi list-action-icon" textWrap="true" />
+                    <Label row="0" col="2" text="Report Conversation" class="list-action-text" textWrap="true" />
+                    <Label row="0" col="3" text="&#xe96a;" class="fi list-action-arrow" textWrap="true" />
+                    <Label verticalAlignment="bottom" col="2" colSpan="3" class="divider" textWrap="true" />
+                </GridLayout>
+            </RL:Ripple>
+            <RL:Ripple row="2" rippleColor="#86ce6a" pan="{{ panToViewProfile }}" height="50">
+                <GridLayout rows="50,1" height="100%" width="100%" class="list-action" columns="10,auto, *, auto,10">
+                    <Label row="0" col="1" text="&#xeb04;" class="fi list-action-icon" textWrap="true" />
+                    <Label row="0" col="2" text="Scheduled Messages" class="list-action-text" textWrap="true" />
+                    <Label row="0" col="3" text="&#xe96a;" class="fi list-action-arrow" textWrap="true" />
+                    <Label verticalAlignment="bottom" col="2" colSpan="3" class="divider" textWrap="true" />
+                </GridLayout>
+            </RL:Ripple>
+            <RL:Ripple row="3" rippleColor="#86ce6a" height="50" pan="{{ panToViewProfile }}">
+                <GridLayout rows="50" height="100%" width="100%" class="list-action" columns="10,auto, *, auto,10">
+                    <Label row="0" col="1" text="&#xe9c9;" class="fi list-action-icon block" textWrap="true" />
+                    <Label row="0" col="2" text="Block User" class="list-action-text" textWrap="true" />
+                    <Label row="0" col="3" text="&#xe96a;" class="fi list-action-arrow block" textWrap="true" />
+                    <!-- <Label verticalAlignment="bottom" col="2" colSpan="3" class="divider" textWrap="true" /> -->
+                </GridLayout>
+            </RL:Ripple>
+        </StackLayout>
+    </GridLayout>
+</Page>

@@ -1,0 +1,12 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" shownModally="onShownModally">
+    <GridLayout rows="40, 10,200,50" columns="">
+        <Label row="0" style="font-size:30; text-align:center;" text="Select Country Code" textWrap="true" />
+        <ListPicker height="100%" row="2" loaded="onListPickerLoaded" items="{{ items }}" textField="nameCode" valueField="code" selectedIndex="{{ index }}" selectedValue="{{ selectedItem }}">
+        </ListPicker>
+        <StackLayout row="3" style="margin-bottom:10;" orientation="vertical" class="container">
+            <Button text="Select" onTap="onSelectCountryCode" class="rounded-btn" />
+        </StackLayout>
+    </GridLayout>
+
+
+</Page>

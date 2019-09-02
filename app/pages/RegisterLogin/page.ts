@@ -14,7 +14,7 @@ class RegisterLoginModel extends Observable{
         this.page = page;
         this.navigation = new Navigations(page);
         //Initialize default values.
-        this.applicationModel.statusBarColor= "#ffffff";
+        this.applicationModel.customStatusBarColor("#ffffff");
     }
 }
 export function navigatingTo(args: EventData) {
