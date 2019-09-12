@@ -1,28 +1,34 @@
-<StackLayout 
-    xmlns:ui="components/header-bar" 
+<StackLayout xmlns:ui="components/header-bar" 
     xmlns:nativescript-image="nativescript-image" 
     xmlns:lv="nativescript-ui-listview" 
     xmlns:RL="nativescript-ripple" loaded="loaded" orientation="vertical">
-    
-    <Label class="section-header" text="Recent Chats" textWrap="true" />
-    <ScrollView class="page-scroll" height="100%">
-        <StackLayout height="100%">
-            <lv:RadListView id="recent-chats" height="100%" items="{{ recentChats }}" loaded="onListViewLoaded">
-                <lv:RadListView.itemTemplate>
-                    <!-- <RL:Ripple rippleColor="#86ce6a"> -->
-                        <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
-                            <nativescript-image:Img col="0" tap="{{ previewImage }}" width="60" height="60" id="profile-image" placeholderImageUri="{{initials}}" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1;" />
-                            <GridLayout rows="20,30" col="1" class="list-item-body" tap="{{ viewConversation }}" orientation="vertical">
-                                <Label row="0" text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
-                                <GridLayout row="1" rows="*" width="100%" columns="10,*" class="msg-container">
-                                    <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" />
-                                    <Label row="0" col="1" text="{{ lastMessage }}" class="msg-preview" />
-                                </GridLayout>
-                            </GridLayout>
+    <Label class="loading-bar" text="Checking for new  messages..." textWrap="true" />
+    <Label class="section-header" visibility="{{ recentChats.length ? 'visible' : 'collapsed' }}" text="Recent Chats" textWrap="true" />
+
+    <StackLayout rows="auto" height="100%">
+        <ScrollView height="100%" orientation="vertical" visibility="{{ recentChats.length ? 'collapse' : 'visible' }}">
+            <StackLayout verticalAlignment="center" class="empty-state" >
+                <Image verticalAlignment="center" class="state-image" src="~/assets/images/empty-chat.png" stretch="aspectFit" />
+                <Label verticalAlignment="center" class="heading" text="No Conversation, yet" textWrap="true" />
+                <Label verticalAlignment="center" class="description" text="Start a conversation by selecting a contact" textWrap="true" />
+                <Button text="Select A Contact" class="rounded-btn select-contact"/>
+            </StackLayout>
+        </ScrollView>
+        <lv:RadListView id="recent-chats" visibility="{{ recentChats.length ? 'visible' : 'collapsed' }}" height="100%" items="{{ recentChats }}" loaded="onListViewLoaded">
+            <lv:RadListView.itemTemplate>
+                <!-- <RL:Ripple rippleColor="#86ce6a"> -->
+                <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
+                    <nativescript-image:Img col="0" tap="{{ previewImage }}" width="60" height="60" id="profile-image" placeholderImageUri="{{initials}}" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1;" />
+                    <GridLayout rows="20,30" col="1" class="list-item-body" tap="{{ viewConversation }}" orientation="vertical">
+                        <Label row="0" text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
+                        <GridLayout row="1" rows="*" width="100%" columns="10,*" class="msg-container">
+                            <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" />
+                            <Label row="0" col="1" text="{{ lastMessage }}" class="msg-preview" />
                         </GridLayout>
-                    <!-- </RL:Ripple> -->
-                </lv:RadListView.itemTemplate>
-            </lv:RadListView>
-        </StackLayout>
-    </ScrollView>
+                    </GridLayout>
+                </GridLayout>
+                <!-- </RL:Ripple> -->
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+    </StackLayout>
 </StackLayout> 

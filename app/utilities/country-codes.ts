@@ -232,7 +232,7 @@ export let countryCodes = [
 ];
 export function getFormatedCountryCode(){
     for (let i = 0; i < countryCodes.length; i++) {
-        countryCodes[i]["nameCode"] = countryCodes[i].name+': +'+countryCodes[i].code;        
+        countryCodes[i]["nameCode"] = countryCodes[i].name+' (+'+countryCodes[i].code+')';        
     }
     countryCodes = countryCodes.sort((a, b) => (a.name > b.name) ? 1 : -1);
 }

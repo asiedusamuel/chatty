@@ -7,22 +7,28 @@ export default class Conversations extends BaseEntity {
     id?: number;
 
     @Column()
-    msgType:ConversationType;
+    msgType: ConversationType;
+    
+    @Column()
+    ConversationID: string;
 
     @Column()
-    message:string;
+    subject: string;
+
+    @Column()
+    message: string;
 
     @Column()
     dateSent: Date;
 
     @Column()
-    read:boolean;
+    read: boolean;
 
     @Column()
     sender: string;
 
     @Column()
-    image:string;
+    image: string;
 
     @Column()
     msgGroup: MessageType;

@@ -1,0 +1,39 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+	xmlns:ui="components/header-bar" 
+	xmlns:ui1="components/fullscreen-loader" 
+	xmlns:alert="components/alert-box" actionBarHidden="true" loaded="loaded" class="page login">
+
+	<GridLayout visibility="visible" rows="50,*" style="height:100%;">
+		<ui:header-bar row="0" title="" id="custom-action-bar"></ui:header-bar>					
+				<GridLayout row="1" id="register-panel" verticalAlignment="bottom" rows="auto, auto,auto,auto,auto,auto,auto,auto,80">
+					<Image class="logo-on-login" height="80" horizontalAlignment="center" src="~/assets/images/logo.png" />
+					<Label row="2" text="Create An Account" class="signup-title" textWrap="true" />
+					<alert:alert-box id="alert-box" row="3" />
+					<StackLayout row="4" orientation="vertical" class="container">
+						<Label text="Phone Number" class="label" />
+						<StackLayout orientation="horizontal" class="rounded-input1">
+							<Label text="{{ applicationModel.countryCode }}" horizontalAlignment="left" class="country-code-label" textWrap="true" tap="{{applicationModel.changeCountryCode}}" />
+							<TextField id="userNumber" keyboardType="phone" hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10"/>
+						</StackLayout>
+					</StackLayout>
+					<StackLayout row="5" orientation="vertical" class="container">
+						<Label text="Type your password" class="label" />
+						<GridLayout rows="auto" columns="*, auto" row="6" class="rounded-input1 password-content">
+							<TextField secure="true" id="accountPassword" returnKeyType="done" autocorrect="false"/>
+							 <Button row="0" col="2" tap="{{ togglePassLabel }}" text="&#xe9a3;" class="fi hide-show-pass" />
+						</GridLayout>
+					</StackLayout>
+					<StackLayout row="6" orientation="horizontal" horizontalAlignment="center" class="container">
+						<Button text="Create Account" onTap="{{signUp}}" class="rounded-btn login-btn" />
+					</StackLayout>
+					<StackLayout row="7" orientation="horizontal" verticalAlignment="bottom" style="padding-top:20" horizontalAlignment="center" class="container">
+						<Label text="By signing up you agree to our" textWrap="true" />
+						<Label text="terms and conditions" class="text-link" textWrap="true" />
+					</StackLayout>
+					<ui1:fullscreen-loader row="0" rowSpan="9" id="loader-panel" visibility="collapse" />
+				</GridLayout>
+		
+	</GridLayout>
+
+
+</Page>

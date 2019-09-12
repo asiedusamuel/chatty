@@ -3,7 +3,7 @@ import { Observable, ShowModalOptions, View } from "tns-core-modules/ui/page/pag
 import { appData } from "~/app";
 import { Utils } from "~/utilities/Utils";
 import { format, render, cancel, register } from 'timeago.js';
-export class chatItem extends Observable {
+export class ConversationItem extends Observable {
     public appModule: appData = application['data'];
     public tapColor: string;
     private _image: string;

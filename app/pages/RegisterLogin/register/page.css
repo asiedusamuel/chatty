@@ -3,8 +3,7 @@
 }
 
 .logo-on-login {
-    margin-top: 5%;
-    margin-bottom: 5%;
+   margin-bottom: 50;
 }
 
 .login-btn {
@@ -15,13 +14,34 @@
     margin-left: 5;
 }
 .country-code-label{
-    margin: 11.5 0 0 9;
+    margin-top: 1.5;
+    margin-right: 2;
     font-size: 17.5;
     text-align: right;
-    width: 35;
 }
 .signup-title{
     font-size: 26;
     font-weight: 300;
     text-align: center;
+}
+.password-content{
+    padding-top: 0;
+    padding-right: 12;
+    padding-bottom: 0;
+}
+
+.label{
+    margin-top: 10;
+}
+
+.hide-show-pass{
+    font-size: 18;
+    color: #e0e0e0;
+    width: 50;
+    height: 40;
+    padding: 0;
+    z-index: 0;
+    background-color: transparent;
+    border-width: 0;
+    text-align: right;
 }

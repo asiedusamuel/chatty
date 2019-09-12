@@ -14,9 +14,6 @@ export default class Users extends BaseEntity{
     displayName:string;
 
     @Column()
-    lastSeen: Date;
-
-    @Column()
     loggedIn:boolean;
 
     constructor(){

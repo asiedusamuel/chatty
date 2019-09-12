@@ -6,21 +6,24 @@ purpose of the file is to pass control to the app’s first module.
 
 import * as application from "tns-core-modules/application";
 import * as color from 'tns-core-modules/color';
-import { Observable } from "tns-core-modules/data/observable";
+import { Observable, EventData } from "tns-core-modules/data/observable";
 import * as platform from 'tns-core-modules/platform';
 import { Utils } from "./utilities/Utils";
-import { chatItem } from "~/pages/home/chat-item";
+import { ConversationItem } from "~/pages/home/chat-item";
 import { initialize } from "nativescript-image";
 var frame = require("tns-core-modules/ui/frame");
 import {initDB} from "./Database/Service";
+import { Label } from "tns-core-modules/ui/label/label";
+import { ShowModalOptions } from "tns-core-modules/ui/page/page";
 
 declare var android;
 export class appData extends Observable {
     public appName: string = "Chatty"
     private _statusBarColor: string = "#6db94f";
-    public recentChats: chatItem[] = [];
+    public recentChats: ConversationItem[] = [];
     private _handles: object = {};
     private _user;
+    public countryCode:string = '+233';
     public scheduledChats: Array<any> = [];
     constructor() {
         super();
@@ -42,7 +45,7 @@ export class appData extends Observable {
             primaryColor: '#6db94f',
             primaryColorLight: '#86ce6a',
             primaryColorDark: '#549739',
-        }
+        } 
         return _colors;
     }
     get statusBarColor(): string {
@@ -51,19 +54,8 @@ export class appData extends Observable {
 
     set statusBarColor(value: string) {
         if (this._statusBarColor !== value) {
-            /* this._statusBarColor = value;
-            if (application.android && platform.device.sdkVersion >= "21") {
-                const window = application.android.foregroundActivity.getWindow();
-                let decorView = window.getDecorView();
-                decorView.setSystemUiVisibility(Utils.lightOrDark(value) == 'dark' ? android.view.View.SYSTEM_UI_FLAG_DARK_STATUS_BAR : android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR)
-                window.setStatusBarColor(new color.Color(value).android);
-                window.statusBarStyle = 1;
-            }
-            if (platform.isIOS) {
-                var navigationBar = frame.topmost().ios.controller.navigationBar;
-                navigationBar.barStyle = new color.Color(value).ios;
-            }
-            this.notifyPropertyChange("statusBarColor", value);  */
+            this._statusBarColor = value;             
+            this.notifyPropertyChange("statusBarColor", value);
         }
     }
     private _StatusBarTimer: any;
@@ -92,6 +84,7 @@ export class appData extends Observable {
             this._handles[name][id] = callback;
         }
     }
+
     triggerHander(name: string, data?: any) {
         if (this._handles[name]) {
             for (const key in this._handles[name]) {
@@ -102,6 +95,26 @@ export class appData extends Observable {
             }
         }
     }
+    changeCountryCode(args: EventData) {
+        const mainView: Label = <Label>args.object;    
+        const option: ShowModalOptions = {
+            context: { selectedValue: mainView.get('text') },
+            closeCallback: (selectedCC) => {
+                if (typeof selectedCC !== 'undefined' && selectedCC != "") {
+                    if (selectedCC.length == 1) {
+                        selectedCC = '00' + selectedCC
+                    }
+                    if (selectedCC.length == 2) {
+                        selectedCC = '0' + selectedCC
+                    }
+                    mainView.set('text','+' + selectedCC);
+                }
+            },
+            fullscreen: false
+        };
+    
+        mainView.showModal("./pages/RegisterLogin/login/country-codes-modal", option);
+    }
 }
 
 if (application.android) {
@@ -109,11 +122,12 @@ if (application.android) {
         initialize();
     });
 }
+
 initDB().then(db=>{
     (<any>application).data = new appData;
 }).catch(err=>{
-    console.log(err)
-})
+    console.log(err);
+});
 
 application.run({ moduleName: "app-root" });
 /*

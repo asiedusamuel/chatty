@@ -4,7 +4,8 @@ import { connectionType, getConnectionType, startMonitoring, stopMonitoring } fr
 type RequestOptions = { url: string, data?: object };
 
 class APIService {
-    serverAddress: string = 'http://192.168.100.24:3000' //'http://192.168.0.101:3000';
+    serverAddress: string = 'http://192.168.1.101:3000';
+    //serverAddress: string = 'http://192.168.0.102:3000';
     private checkConnection() {
         const ConnectionType = getConnectionType();
         switch (ConnectionType) {
@@ -35,8 +36,10 @@ class APIService {
                         resolve(result);
                     }, (error) => { 
                         reject('An error occured. Try again');
+                        console.log(error)
                     }).catch(error => {
                         reject('An error occured. Try again');
+                        //console.log(error)
                     });
                 } catch (error) {
                     reject(error);
@@ -64,7 +67,10 @@ class APIService {
         return this.post({ url: '/account-check', data: { userNumber } });
     }
     checkAccountPassword(account:string, password: string): Promise<Object> {
-        return this.post({ url: '/account-password-check', data: { account, password } });
+        return this.post({ url: '/account-check-auth', data: { account, password } });
+    }
+    signUp(account:string, email:string, password: string): Promise<Object> {
+        return this.post({ url: '/signup', data: { account, password, email } });
     }
 }
 

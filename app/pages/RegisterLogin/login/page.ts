@@ -65,11 +65,11 @@ export class LoginModel extends Observable {
                 return JSON.parse(data)
             }).then((data: any) => {
                 if (data.success) {
+                    this.applicationModel.user = data.user;
+                    this.navigation.navigateToLoginPassword();
                     setTimeout(() => {
                         this.hideLoader();
                     }, 1000);
-                    this.applicationModel.user = data.user;
-                    this.navigation.navigateToLoginPassword();
                 } else {
                     this.hideLoader();
                     this.alertBox.bindingContext.alert(alertType.error, data.message);
@@ -89,24 +89,3 @@ export function loaded(args: EventData) {
     if (!page.bindingContext) page.bindingContext = new LoginModel(page);
 }
 
-export function changeCountryCode(args: EventData) {
-    const mainView: Label = <Label>args.object;    
-    const option: ShowModalOptions = {
-        context: { selectedValue: mainView.get('text') },
-        closeCallback: (selectedCC) => {
-            if (typeof selectedCC !== 'undefined' && selectedCC != "") {
-                if (selectedCC.length == 1) {
-                    selectedCC = '00' + selectedCC
-                }
-                if (selectedCC.length == 2) {
-                    selectedCC = '0' + selectedCC
-                }
-                mainView.set('text','+' + selectedCC);
-            }
-        },
-        fullscreen: false
-    };
-
-    mainView.showModal("./pages/RegisterLogin/login/country-codes-modal", option);
-
-}

@@ -11,9 +11,9 @@
 				<alert:alert-box id="alert-box" row="2" />
 				<StackLayout row="3" orientation="vertical" class="container">
 					<Label text="Phone Number" class="label" />
-					<StackLayout orientation="horizontal" rows="50" cols="auto, auto,*" class="rounded-input1"> 
-						<Label text="{{countryCode}}" row="0" col="0" horizontalAlignment="left" class="country-code-label" textWrap="true" tap="changeCountryCode" />
-						<TextField row="0" col="1" text="{{ userNumber }}" keyboardType="phone" hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10"/>
+					<StackLayout orientation="horizontal" class="rounded-input1"> 
+						<Label text="{{ applicationModel.countryCode }}" horizontalAlignment="left" class="country-code-label" textWrap="true" tap="{{applicationModel.changeCountryCode}}" />
+						<TextField text="{{ userNumber }}" keyboardType="phone" hint="240 123 456" secure="false" returnKeyType="done" autocorrect="false" maxLength="10"/>
 					</StackLayout>
 				</StackLayout>
 				<StackLayout row="4" orientation="vertical" class="container">

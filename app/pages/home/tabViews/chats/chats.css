@@ -2,3 +2,14 @@
     margin: 0;
     padding: 0;
 }
+.loading-bar{
+    background: #ee4b00;
+    color: #ffffff;
+    padding: 2 5;
+    font-weight: 300;
+}
+.select-contact{
+    margin-top: 20;
+    margin-bottom: 20;
+    width: 220;
+}
