@@ -1,17 +1,17 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" 
     xmlns:ui="components/header-bar" actionBarHidden="true" navigatingTo="navigatingTo" class="page">
     
-    <GridLayout rows="50, *, 60" height="100%">
+    <GridLayout rows="50, *, 65" height="100%">
         <ui:header-bar row="0" title="My Chats" id="custom-action-bar"></ui:header-bar>
         <TabView row="1" id="tabViewContainer" visibility="{{ isReady ? 'visible' : 'collapsed' }}" class="sub-frame" selectedIndexChanged="{{ onSelectedIndexChanged }}">
             <TabView.items>
                 <TabViewItem xmlns:Chats="pages/home/tabViews/chats">
                     <TabViewItem.view>
-                        <Chats:chats />
+                        <Chats:conversation-list />
                     </TabViewItem.view>
                 </TabViewItem>
                 <TabViewItem xmlns:Scheduled="pages/home/tabViews/scheduled">
-                    <TabViewItem.view>
+                    <TabViewItem.view> 
                         <Scheduled:scheduled />
                     </TabViewItem.view>
                 </TabViewItem>
@@ -30,19 +30,19 @@
         
         <StackLayout row="2" id="tab" class="custom-tab" justifyContent="center" orientation="horizontal">
             <StackLayout index="0" onTap="{{ tabChange }}" class="{{ 'tab-button' + (selectedPage === 0 ? ' active': '') }}">
-                <Label text="&#xe99c;" style="padding-top:9" class="fi tab-icon" />
+                <Label text="&#xe99c;" class="fi tab-icon" />
                 <Label text="Chats" class="tab-title" />
             </StackLayout>
             <StackLayout index="1" onTap="{{ tabChange }}" class="{{ 'tab-button' + (selectedPage === 1 ? ' active': '') }}">
-                <Label text="&#xe997;" style="padding-top:9" class="fi tab-icon" />
+                <Label text="&#xe997;" class="fi tab-icon" />
                 <Label text="Scheduled" class="tab-title" />
             </StackLayout>
             <StackLayout index="2" onTap="{{ tabChange }}" class="{{ 'tab-button' + (selectedPage === 2 ? ' active': '') }}">
-                <Label text="&#xe9ad;" style="padding-top:8" class="icofont tab-icon" />
+                <Label text="&#xe9ad;" class="icofont tab-icon" />
                 <Label text="Contacts" class="tab-title" />
             </StackLayout>
             <StackLayout index="3" onTap="{{ tabChange }}" class="{{ 'tab-button' + (selectedPage === 3 ? ' active': '') }}">
-                <Label text="&#xe9f6;" style="padding-top:9" class="icofont tab-icon" />
+                <Label text="&#xe9f6;" class="icofont tab-icon" />
                 <Label text="Settings" class="tab-title" />
             </StackLayout>
         </StackLayout>

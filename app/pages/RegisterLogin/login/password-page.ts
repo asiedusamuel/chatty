@@ -28,6 +28,8 @@ export class LoginPasswordModel extends Observable {
         this.loaderPanel = page.getViewById('loader-panel');
         this.applicationModel.statusBarColor = "#FFFFFF";
         this.alertBox = page.getViewById('alert-box');
+        this.displayPicture = API.serverAddress +'/assets/profile/'+(<any>this.applicationModel).temp.uid+'.png';
+        
     }
     get accountPassword(): string { return this._accountPassword; };
     set accountPassword(value: string) {
@@ -36,13 +38,21 @@ export class LoginPasswordModel extends Observable {
             this.notifyPropertyChange("accountPassword", value);
         }
     }
+    public get displayPicture() : any {
+        return this.get("_displayPicture");
+    }
+
+    public set displayPicture(v : any) {
+        this.set("_displayPicture", v);
+    }
 
     initialsImg(): ImageSource {
-        const initials = Utils.createInitials(this.applicationModel.user.displayName);
+        const initials = Utils.createInitials((<any>this.applicationModel).temp.displayName);
         var image = Utils.initialsImg({ size: 200, initials: initials });
         this.notifyPropertyChange('initialsImg', image);
         return image;
     }
+
 
     private showLoader() {
         this.loaderPanel.bindingContext.Show();
@@ -56,17 +66,19 @@ export class LoginPasswordModel extends Observable {
         var accountPassword = this.page.getViewById('password-input').get('text');
         if (accountPassword) {
             this.showLoader();
-            API.checkAccountPassword(this.applicationModel.user.userNumber, accountPassword).then((data: any) => {
+            API.checkAccountPassword((<any>this.applicationModel).temp.uid, accountPassword).then((data: any) => {
                 return JSON.parse(data)
             }).then(async (data: any) => {
                 if (data.success) {
-                    await getConnection().createQueryBuilder().delete().from(Users).execute();
-                    await getConnection().createQueryBuilder().delete().from(Conversations).execute();
-                    let user = new Users;
+                    await this.applicationModel.clearDatabase(); 
+                    this.applicationModel.user = data.user;                   
+                    let user = new Users();
+                    user.uid = this.applicationModel.user.uid;
+                    user.email = this.applicationModel.user.email;
+                    user.userNumber = this.applicationModel.user.userNumber;
                     user.displayName = this.applicationModel.user.displayName;
+                    user.profilePicture = this.applicationModel.user.profilePicture;
                     user.loggedIn = true;
-                    user.userID = this.applicationModel.user.userId;
-                    user.number = this.applicationModel.user.userNumber
                     user.save().then(() => {
                         this.navigation.navigateToHome();
                     });

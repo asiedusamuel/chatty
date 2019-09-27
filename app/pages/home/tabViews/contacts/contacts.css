@@ -1,0 +1,33 @@
+#profile-image{
+    border-width: 1;
+    margin-top:3;
+}
+.chatty-list-item .name{
+    font-size: 18;
+    width: 100%;
+    margin-top: 8;
+    margin-left: 10;
+}
+.chatty-list-item .msg-preview{
+    width: 100%;
+    font-size: 18;
+    margin-left: 10;
+    margin-top: 10;
+    padding-top: 20;
+    font-weight: 300;
+}
+.chatty-list-item .c-item-action{
+    border-radius: 50;
+    background-color: transparent;
+    border-width: 0;
+    border-color: transparent;
+    z-index: 0;
+    width: 40;
+    height: 40;
+    padding:5; 
+    margin-top: 10;
+    font-size: 16;
+}
+.chatty-list-item .c-item-action:active{
+    z-index: 3;
+}

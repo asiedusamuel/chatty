@@ -30,8 +30,11 @@ export class Navigations{
     public navigateToRegisterSuccess(args?: any){ 
         this.page.frame.navigate({moduleName:"pages/RegisterLogin/register/signup-success"});
     } 
-    public navigateToLoader(args?: any){
-        this.page.frame.navigate({moduleName:"pages/loader/page"});
+    public navigateToVerifyCode(args?: any){
+        this.page.frame.navigate({moduleName:"pages/RegisterLogin/register/verify-code"});
+    }
+    public navigateToRegDisplayName(args?: any){
+        this.page.frame.navigate({moduleName:"pages/RegisterLogin/register/display-name",clearHistory:true});
     }
     public navigateToRegisterLogin(args?: any){ 
         //console.log(this.page.frame.navigate);

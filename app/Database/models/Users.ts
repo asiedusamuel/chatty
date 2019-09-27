@@ -5,10 +5,14 @@ export default class Users extends BaseEntity{
     id?: number;
 
     @Column()
-    userID:string;
+    uid:string;
 
     @Column()
-    number:string;
+    email:string;
+
+    @Column()
+    userNumber:string;
+
 
     @Column()
     displayName:string;
@@ -16,7 +20,11 @@ export default class Users extends BaseEntity{
     @Column()
     loggedIn:boolean;
 
-    constructor(){
+    @Column()
+    profilePicture:string;
+
+    constructor(){ 
         super();
     }
+    
 }

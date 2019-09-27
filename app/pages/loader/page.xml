@@ -1,8 +1,0 @@
-<Page xmlns="http://schemas.nativescript.org/tns.xsd" actionBarHidden="true" navigatingTo="navigatingTo" unloaded="pageUnloaded" class="page">
-	<StackLayout orientation="vertical">
-		<StackLayout verticalAlignment="center" style="height: 100%; width:auto">
-			<ActivityIndicator verticalAlignment="center" horizontalAlignment="center" busy="true" width="50" height="50" class="activity-indicator" />
-			<Label text="This might take a while. Please wait..." style="margin-top:20;" horizontalAlignment="center" textWrap="true" />	
-		</StackLayout>		
-	</StackLayout>
-</Page>

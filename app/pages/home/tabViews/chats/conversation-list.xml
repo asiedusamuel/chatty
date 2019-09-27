@@ -2,19 +2,19 @@
     xmlns:nativescript-image="nativescript-image" 
     xmlns:lv="nativescript-ui-listview" 
     xmlns:RL="nativescript-ripple" loaded="loaded" orientation="vertical">
-    <Label class="loading-bar" text="Checking for new  messages..." textWrap="true" />
+    <Label class="message-bar" text="Checking for new  messages..." textWrap="true" />
     <Label class="section-header" visibility="{{ recentChats.length ? 'visible' : 'collapsed' }}" text="Recent Chats" textWrap="true" />
-
+    
     <StackLayout rows="auto" height="100%">
         <ScrollView height="100%" orientation="vertical" visibility="{{ recentChats.length ? 'collapse' : 'visible' }}">
             <StackLayout verticalAlignment="center" class="empty-state" >
                 <Image verticalAlignment="center" class="state-image" src="~/assets/images/empty-chat.png" stretch="aspectFit" />
                 <Label verticalAlignment="center" class="heading" text="No Conversation, yet" textWrap="true" />
                 <Label verticalAlignment="center" class="description" text="Start a conversation by selecting a contact" textWrap="true" />
-                <Button text="Select A Contact" class="rounded-btn select-contact"/>
+                <Button text="Select A Contact" class="rounded-btn select-contact" tap="{{ gotoContacts }}"/>
             </StackLayout>
         </ScrollView>
-        <lv:RadListView id="recent-chats" visibility="{{ recentChats.length ? 'visible' : 'collapsed' }}" height="100%" items="{{ recentChats }}" loaded="onListViewLoaded">
+        <lv:RadListView id="recent-chats" pullToRefresh="true" visibility="{{ recentChats.length ? 'visible' : 'collapsed' }}" height="100%" items="{{ recentChats }}" loaded="onListViewLoaded">
             <lv:RadListView.itemTemplate>
                 <!-- <RL:Ripple rippleColor="#86ce6a"> -->
                 <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">

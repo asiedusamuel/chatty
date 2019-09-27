@@ -2,14 +2,14 @@ import { EventData, Observable, View } from "tns-core-modules/ui/page/page";
 import { Label } from "tns-core-modules/ui/label/label";
 import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout/stack-layout";
 
-export enum alertType { error = 'error', success = 'success' }
+export enum alertType { error = 'error', success = 'success', info='info' }
 export class alertBox extends Observable {
     private label: Label;
     private container: StackLayout;
     private _alertMessage: string;
     private _alertType: alertType;
     private _alertVisible: boolean = false;
-    private height:number;
+    private height: number;
     constructor() {
         super();
     }
@@ -27,16 +27,16 @@ export class alertBox extends Observable {
     get alertMessage(): string { return this._alertMessage; };
     set alertMessage(value: string) {
         if (this._alertMessage !== value) {
-            this._alertMessage = value; 
+            this._alertMessage = value;
             this.notifyPropertyChange("alertMessage", value);
             setTimeout(() => {
                 this.height = this.label.getMeasuredHeight();
             }, 500);
-            
+
         }
     }
 
-    public alert(type: alertType, message: string) {
+    public alert(type: alertType, message: string, stay?: boolean) {
         this.alertMessage = message;
         this.alertType = type;
         this.alertVisible = true;
@@ -44,17 +44,20 @@ export class alertBox extends Observable {
             opacity: 1,
             duration: 500
         }).then(() => {
-            setTimeout(() => {
-                this.container.animate({
-                    opacity: 0,
-                    height:0,
-                    duration: 1000
-                }).then(() => {
-                    this.alertVisible = false;
-                    this.container.height = 'auto';
-                    this.alertMessage = '';
-                })
-            }, 10000);
+            if (!stay) {
+                setTimeout(() => {
+                    this.container.animate({
+                        opacity: 0,
+                        height: 0,
+                        duration: 1000
+                    }).then(() => {
+                        this.alertVisible = false;
+                        this.container.height = 'auto';
+                        this.alertMessage = '';
+                    })
+                }, 10000);
+            }
+
         })
 
     }

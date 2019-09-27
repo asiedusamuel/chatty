@@ -78,6 +78,10 @@ export class ChatsModel extends Observable {
         }
     }
 
+    gotoContacts(){
+        (<any>this.appModel).tabView.selectedIndex = 2; 
+    }
+
     get recentChats(): ObservableArray<ConversationItem> {
         return this.get("_recentChats");
     }

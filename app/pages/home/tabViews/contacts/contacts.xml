@@ -1,24 +1,21 @@
-<StackLayout xmlns:ui="components/header-bar" xmlns:nativescript-image="nativescript-image" loaded="loaded" orientation="vertical">
-    <ui:header-bar title="Contacts"></ui:header-bar>
-    <ScrollView class="page-scroll">
-        <StackLayout height="100%">
-            <Label class="section-header" text="Available Friend" textWrap="true" />
-            <ListView id="recent-chats" items="{{ applicationModel.scheduledChats }}" itemTap="{{ onTapRecentChatItem }}" height="100%" separatorColor="transparent" rowHeight="70" class="list-group" id="listView" row="0">
-                <ListView.itemTemplate>
-                    <GridLayout columns="70, *, 50" class="chatty-list-item" rows="*">
-                        <nativescript-image:Img col="0" width="60" height="60" id="profile-image" src="{{ image }}" class="profile-image medium" roundAsCircle="true" style="border-width:1s;" />
-                        <StackLayout col="1" class="list-item-body" orientation="vertical">
-                            <Label text="{{ name || 'Unknown Contact' }}" class="name" textWrap="true" />
-                            <GridLayout rows="*" width="100%" columns="10,*"  class="msg-container">
-                                <Label text="" row="0" col="0" class="{{'status '+ status || 'offline'}}" textWrap="true" />
-                                <Label row="0" col="1" text="{{ status || 'offline'}}" class="msg-preview" textWrap="true" />
-                            </GridLayout>
-                        </StackLayout>
-
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+    xmlns:nativescript-image="nativescript-image" 
+    xmlns:lv="nativescript-ui-listview" 
+    xmlns:RL="nativescript-ripple" 
+    xmlns:PullRefresh="@nstudio/nativescript-pulltorefresh" 
+    xmlns:ui="components/header-bar" actionBarHidden="true" loaded="loaded" class="page">
+    <PullRefresh:PullToRefresh id="pull-to-refresh" height="100%" refresh="{{refreshContacts}}">
+        <lv:RadListView id="contacts" visibility="{{ Contacts.length ? 'visible' : 'collapsed' }}" height="100%" items="{{ Contacts }}">
+            <lv:RadListView.itemTemplate>
+                <RL:Ripple rippleColor="#86ce6a" tap="{{openConversation}}" longPress="{{toggleSelection}}">
+                    <GridLayout columns="70, *, 50,2" class="chatty-list-item" width="100%" rows="1, auto">
+                        <nativescript-image:Img row="1" rowSpan="2" col="0" tap="{{ previewImage }}" width="60" height="60" id="profile-image" placeholderImageUri="{{initials}}" src="{{ DisplayPicture }}" class="profile-image medium" roundAsCircle="true" />
+                        <Label row="1" col="1" text="{{ name }}" class="name" verticalAlignment="top" textWrap="true" />
+                        <Label row="1" col="1" text="{{ number }}" class="msg-preview" verticalAlignment="top" />
+                        <Button row="1" col="2"  rowSpan="2" text="&#xe9af;" verticalAlignment="top" class="fi c-item-action"/>
                     </GridLayout>
-                </ListView.itemTemplate>
-            </ListView>
-            <Label class="section-header" text="All Contacts" textWrap="true" />
-        </StackLayout>
-    </ScrollView>
-</StackLayout>
+                </RL:Ripple>
+            </lv:RadListView.itemTemplate>
+        </lv:RadListView>
+    </PullRefresh:PullToRefresh>
+</Page>  

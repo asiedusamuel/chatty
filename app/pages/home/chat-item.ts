@@ -35,9 +35,9 @@ export class ConversationItem extends Observable {
     }
 
     get initials(): any {
+        var init: string = '#';
         if (this.name) {
             const names = this.name.split(' ');
-            var init: string = '#';
             if (names.length >= 2) {
                 init = names[0].charAt(0) + names[1].charAt(0);
             } else if (names.length == 1) {

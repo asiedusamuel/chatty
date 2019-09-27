@@ -26,11 +26,14 @@ export class StartUpModel extends Observable {
     public checkAuthentication() {
         Users.find({ where: { loggedIn: true}}).then((user) => {
             if(user.length){
+                (<appData>(<any>application).data).user = user[0];
                 this.navigation.navigateToHome();
             }else{
                 this.navigation.navigateToRegisterLogin();
             }         
-        }).catch(console.error)
+        }).catch(err=>{
+            alert(err+"Oops!! An error occured. Cannot proceed at this point.");
+        });
     }
 }
 export function loaded(args: EventData) {

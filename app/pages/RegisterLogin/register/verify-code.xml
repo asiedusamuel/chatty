@@ -1,0 +1,40 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+	xmlns:ui="components/header-bar" 
+	xmlns:ui1="components/fullscreen-loader" 
+	xmlns:alert="components/alert-box" actionBarHidden="true" loaded="loaded" class="page login">
+
+	<GridLayout visibility="visible" rows="50,*" style="height:100%;">
+		<ui:header-bar row="0" title="" id="custom-action-bar"></ui:header-bar>
+		<GridLayout row="1" id="register-panel" verticalAlignment="top" rows="auto, auto,auto,auto,60">
+			<Image class="logo-on-login" height="80" horizontalAlignment="center" src="~/assets/images/logo.png" />
+			<Label row="1" text="Verify Account" class="signup-title" textWrap="true" />
+			<alert:alert-box id="alert-box" row="2" />
+			<StackLayout row="3" width="auto" orientation="horizontal" style="margin-top:20;" horizontalAlignment="center" >
+				<GridLayout row="0" col="0"  class="rounded-input1 verify-input">
+					<Label text="{{pin1}}" textWrap="true" class="text-overlay" />
+					<TextField id="pin1" text="{{pin1}}" keyboardType="number" hint="#" textChange="{{ validateCode }}" secure="false" returnKeyType="next" autocorrect="false" maxLength="1"/>
+					<Label textWrap="true" verticalAlignment="bottom" text="" class="text-cc" />
+				</GridLayout>
+				<GridLayout row="0" col="1" class="rounded-input1 verify-input ml-2">
+					<Label text="{{pin2}}" textWrap="true" class="text-overlay" />
+					<TextField id="pin2" text="{{pin2}}" keyboardType="number" hint="#" textChange="{{ validateCode }}" secure="false" returnKeyType="next" autocorrect="false" maxLength="1"/>
+					<Label textWrap="true" verticalAlignment="bottom" text="" class="text-cc" />
+				</GridLayout>
+				<GridLayout row="0" col="1" class="rounded-input1 verify-input ml-2">
+					<Label text="{{pin3}}" textWrap="true" class="text-overlay" />
+					<TextField id="pin3" text="{{pin3}}" keyboardType="number" hint="#" textChange="{{ validateCode }}" secure="false" returnKeyType="next" autocorrect="false" maxLength="1"/>
+					<Label textWrap="true" verticalAlignment="bottom" text="" class="text-cc" />
+				</GridLayout>
+				<GridLayout row="0" col="1" class="rounded-input1 verify-input ml-2">
+					<Label text="{{pin4}}" textWrap="true" class="text-overlay" />
+					<TextField id="pin4" text="{{pin4}}" keyboardType="number" hint="#" textChange="{{ validateCode }}" secure="false" returnKeyType="next" autocorrect="false" maxLength="1"/>
+					<Label textWrap="true" verticalAlignment="bottom" text="" class="text-cc" />
+				</GridLayout>
+			</StackLayout>
+			<ui1:fullscreen-loader row="0" rowSpan="4" id="loader-panel" visibility="collapse" />
+		</GridLayout>
+
+	</GridLayout>
+
+
+</Page>

@@ -65,7 +65,7 @@ export class LoginModel extends Observable {
                 return JSON.parse(data)
             }).then((data: any) => {
                 if (data.success) {
-                    this.applicationModel.user = data.user;
+                    (<any>this.applicationModel).temp = {uid: data.uid, displayName: data.dn};
                     this.navigation.navigateToLoginPassword();
                     setTimeout(() => {
                         this.hideLoader();

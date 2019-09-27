@@ -6,7 +6,7 @@
 	<GridLayout visibility="visible" rows="50,*" style="height:100%;">
 		<ui:header-bar row="0" title="" verticalAlignment="top" id="custom-action-bar"></ui:header-bar>
 
-		<GridLayout row="1" id="register-panel" verticalAlignment="bottom" rows="auto, auto, auto, auto,auto,auto,auto,auto,auto,80">
+		<GridLayout row="1" id="register-panel" verticalAlignment="bottom" rows="auto, auto, auto, auto,auto,auto,auto,auto,auto,auto,80">
 			<Image class="logo-on-login" height="80" horizontalAlignment="center" src="~/assets/images/logo.png" />
 			<Label row="2" text="Create An Account" class="signup-title" textWrap="true" />
 			<alert:alert-box id="alert-box" row="3" />
@@ -37,7 +37,10 @@
 				<Label text="By signing up you agree to our" textWrap="true" />
 				<Label text="terms and conditions" class="text-link" textWrap="true" />
 			</StackLayout>
-			<ui1:fullscreen-loader row="0" rowSpan="9" id="loader-panel" visibility="collapse" />
+			<StackLayout row="9" orientation="horizontal" verticalAlignment="bottom" style="padding-top:20" horizontalAlignment="center" class="container">
+				<Label text="Verify Account" class="text-link" textWrap="true"  />
+			</StackLayout>
+			<ui1:fullscreen-loader row="0" rowSpan="10" id="loader-panel" visibility="collapse" />
 		</GridLayout>
 
 	</GridLayout>

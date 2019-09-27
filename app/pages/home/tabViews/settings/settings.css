@@ -1,0 +1,17 @@
+.display-pic{
+    border-width: 2;
+    border-color: #91d377;
+    margin-bottom: 10;
+    border-radius: 10;
+}
+.loader{
+    font-size: 40;
+    margin-top: 40;
+    animation-name: rotate;
+    animation-duration: 1;
+    animation-iteration-count: infinite;
+}
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

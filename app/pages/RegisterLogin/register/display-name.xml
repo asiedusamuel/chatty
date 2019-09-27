@@ -1,0 +1,25 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+	xmlns:ui="components/header-bar" 
+	xmlns:ui1="components/fullscreen-loader" 
+    xmlns:nativescript-image="nativescript-image" 
+	xmlns:alert="components/alert-box" actionBarHidden="true" loaded="loaded" class="page login">
+
+	<GridLayout visibility="visible" rows="50,*" style="height:100%;">
+		<GridLayout row="1" id="register-panel" verticalAlignment="top" rows="auto, auto,auto,auto,auto,auto,60">
+			<Image class="logo-on-login" height="80" horizontalAlignment="center" src="{{appModel.user.profilePicture}}" />
+			<Label row="1" text="Choose Display Name" class="signup-title" textWrap="true" />
+			<alert:alert-box id="alert-box" row="2" />
+			<nativescript-image:Img id="dp" row="3" width="120" height="120" class="display-pic" horizontalAlignment="center" showProgressBar="true" roundedCornerRadius="15" roundTopRight="true" roundTopLeft="true" roundBottomRight="true" roundBottomLeft="true" tap="{{selectImage}}" src="~/assets/images/unknown.jpg"/>			
+			<StackLayout row="4" orientation="vertical" class="container" style="margin-bottom:2;">
+				<StackLayout orientation="horizontal" class="rounded-input1">
+					<TextField id="dispaly-name" text="{{ displayName }}" hint="Display name" secure="false" returnKeyType="done" autocorrect="true"/>
+				</StackLayout>
+			</StackLayout>
+			<Label row="5" text="This is not your username. This name is used in group chats." style="color:#999;" class="container" textWrap="true" />
+			<StackLayout row="6" verticalAlignment="bottom" class="container">
+				<Button text="Continue" tap="{{ saveDisplayName }}" class="rounded-btn" />
+			</StackLayout>			
+			<ui1:fullscreen-loader row="0" rowSpan="7" id="loader-panel" visibility="collapse" />
+		</GridLayout>
+	</GridLayout>
+</Page>

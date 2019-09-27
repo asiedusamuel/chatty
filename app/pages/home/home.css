@@ -6,10 +6,11 @@
 }
 
 .custom-tab {
-    height: 88;
+    height: 70;
     width: 100%;
     border-top-width: 1; 
     border-top-color: #E8E8E9;
+    
 }
 
 .custom-tab .tab-button.active {
@@ -19,6 +20,7 @@
 .custom-tab .tab-button.active .tab-icon {
     background: #91d377;
     color: #ffffff;
+    padding-top: 8;
 }
 
 .custom-tab .tab-button {
@@ -30,7 +32,7 @@
     color: #91d377;
     border-top-width: 1; 
     border-top-color: #d4d4d4;
-    padding-top: 5;
+    padding-top: 8;
     border-radius: 0;   
 }
 
@@ -38,12 +40,12 @@
     font-size: 24;
     border-radius: 25;
     color: #91d377;
-    padding: 6;
     width: 38;
     height: 38;
-    font-family: 'fontisto'
+    font-family: 'fontisto';
+    padding-top: 6;
 }
 
 .custom-tab .tab-button .tab-title {
-    font-size: 11;
+    font-size: 12;
 }

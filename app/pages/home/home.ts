@@ -22,7 +22,6 @@ export class homeModel extends Observable {
     public _selectedPage: number;
     private tabContainer: TabView;
     private actionBar: GridLayout;
-    private _tabTitles: Array<string> = ["My Chats", "Schedules Messages", "My Contacts", "Settings"]
     constructor() {
         super();
         // Set active
@@ -31,16 +30,13 @@ export class homeModel extends Observable {
 
     setRootView(page: Page) {
         this.page = page;
-        //$ = new nQuery(this.page);
-        //$.select("#tab").hide()
-        // Add the navigations to the model class
-        
         setTimeout(() => {
             this.navigation = new Navigations(page);
             this.applicationModel.customStatusBarColor("#6db94f");
             this.actionBar = page.getViewById('custom-action-bar');
             this.applicationModel.triggerHander('home-tab-changed', this);
             this.actionBar.bindingContext.BackAction = context.navigation.navigateBack;
+            (<any>this.applicationModel).tabView = this.page.getViewById("tabViewContainer");
         }, 100);
         this.tabContainer = this.page.getViewById("tabViewContainer");  
         setTimeout(() => {

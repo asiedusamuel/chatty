@@ -10,7 +10,7 @@ import { Label } from "tns-core-modules/ui/label/label";
 import { alertType } from "~/components/alert-box";
 import { API } from "~/Services/api-request";
 class RegisterModel extends Observable{
-    public navigation;
+    public navigation:Navigations;
     protected page: Page;
     private alertBox: StackLayout;
     private loaderPanel: StackLayout;
@@ -78,6 +78,10 @@ class RegisterModel extends Observable{
             return JSON.parse(data);
         }).then(data =>{
             if (data.success) {
+                (<any>this.applicationModel).temp = {
+                    email
+                }
+                this.navigation.navigateToVerifyCode();
                 setTimeout(() => {
                     this.hideLoader();
                 }, 1000);
