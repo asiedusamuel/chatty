@@ -28,7 +28,7 @@
     "http": "0.0.0",
     "lz-string": "^1.4.4",
     "mysql-promise": "^5.0.0",
-    "socket.io": "^1.7.3",
+    "socket.io": "^2.4.0",
     "sticky-session": "^1.1.2",
     "uuid": "^3.3.3"
   }
